@@ -37,11 +37,40 @@
 				font-weight: 700;
 				text-align: center;
 			}
+			.marquee {
+				width: 100%;
+				overflow: hidden;
+				white-space: nowrap;
+				background: #000;
+				color: #ff0;
+				font-weight: bold;
+				padding: 0.3rem;
+				border-top: 2px solid #ff00aa;
+				border-bottom: 2px solid #ff00aa;
+			}
+
+			.marquee span {
+				display: inline-block;
+				padding-left: 100%;
+				animation: scroll 15s linear infinite;
+			}
+
+			@keyframes scroll {
+				from   { transform: translateX(0); }
+				to { transform: translateX(-100%); }
+			}
+
+			.aside-picture{
+				width: 100%;
+				border: 4px;
+				border: inset;
+				border-color: #ff00aa;
+			}
 			.container{
 				display: grid;
-				grid-template-columns: 400px 10fr 400px;
+				grid-template-columns: 400px 1fr 400px;
 				gap: 10px;
-				max-width: 1200px;
+				max-width: 1600px;
 				margin: 0 auto;
 				padding: 1rem;
 			}
@@ -58,7 +87,7 @@
 				background: #00ff00;
 				color: #000;
 				font-size: 1.1rem;
-				margin-top: 0;
+				margin-top: 35px;
 				padding: 0.2rem 0.5rem;
 				font-family: "Comic Neue", cursive, sans-serif;
 				text-align: center;
@@ -71,11 +100,13 @@
 			.tables{
 				background: #111;
 				font-family: "Comic Neue", cursive, sans-serif;
-				border: 2px;
+				border: 2px double #ff00aa;
 				border-style: solid;
 				border-collapse: collapse;
 				border-color: #ff00aa;
+				box-shadow: 0 0 15px #ff00aa;
 				margin-bottom: 25px;
+				margin-top: 25px;
 				text-align: center;
 			}
 			.tables th,
@@ -91,6 +122,7 @@
 				font-family: "Comic Neue", cursive, sans-serif;
 				text-align: center;
 			}
+		
 		</style>
 	</head>
 	<body>
@@ -98,14 +130,17 @@
 			<h1>★ Faustine Crocq ★</h1>
 		</header>
 		<!-- Ici on integre le texte defilant. Remplacer <marquee></marquee> -->
-		<h2>Développeuse full-stack juniore</h2>
+		<div class="marquee">
+			<span>Développeuse full-stack junior avec une expertise en gestion de projets événementiels.
+				Spécialisée en architecture web et DevOps, avec une forte orientation utilisateur.</span>
+		</div>
 
 		<div class="container">
 
 
 			<!-- Sidebar content: profile, infos, formation -->
 			<aside class="sidebar">
-				<p><img src="images/snoopppY.jpg" alt="Snoopy"></p>
+				<p><img class="aside-picture" src="https://optimise2.assets-servd.host/utter-seal/production/uploads/SnoopyComeHome1.jpg?w=1760&h=990&q=50&fm=jpg&fit=crop&dm=1581665603&s=885c6c40e291f3c2403cd7d3393b30ed" alt="Snoopy"></p>
 				<h3>Contact</h3>
 				<ul>
 					<li>hello@faustoche.com</li>
@@ -116,14 +151,13 @@
 
 				<h3>Compétences</h3>
 				<ul>
-					<li>Langages: C, C++, Typescript, HTML/CSS</li>
-					<li>DevOps: Docker, Docker Compose, Git</li>
-					<li>Frontend: Tailwind CSS</li>
-					<li>Backend: Fastify with Node.js</li>
+					<li><strong>Langages: </strong>C, C++, Typescript, HTML/CSS</li>
+					<li><strong>DevOps: </strong>Docker, Docker Compose, Git</li>
+					<li><strong>Frontend: </strong>Tailwind CSS</li>
+					<li><strong>Backend: </strong>Fastify with Node.js</li>
 					<li>Gestion de projet et coordination d'équipes</li>
 					<li>Résolution de problèmes sous pression</li>
 					<li>Architecture logicielle et design patterns</li>
-					<li>Relation client et pédagogie (formation utilisateurs)</li>
 				</ul>
 
 				<h3>Langues</h3>
@@ -136,12 +170,12 @@
 				
 				<h3>Bénévolat</h3>
 				<ul>
-					<li>Garorock: accueil du public</li>
-					<li>Rock en Seine: gestion des flux</li>
-					<li>Beauregard: billetterie</li>
-					<li>La Route du Rock: nettoyage du site</li>
-					<li>We Love Green: gestion des écocups</li>
-					<li>Fondation GoodPlanet: accueil du public, prise de caisse au bar et en boutique, aide au montage et démontage</li>
+					<li><strong>Garorock: </strong>accueil du public</li>
+					<li><strong>Rock en Seine: </strong>gestion des flux</li>
+					<li><strong>Beauregard: </strong>billetterie</li>
+					<li><strong>La Route du Rock: </strong>nettoyage du site</li>
+					<li><strong>We Love Green: </strong>gestion des écocups</li>
+					<li><strong>Fondation GoodPlanet: </strong>accueil du public, prise de caisse au bar et en boutique, aide au montage et démontage</li>
 				</ul>
 			</aside>
 
@@ -153,20 +187,28 @@
 				<div class="table-title">Projets 42</div>
 					<table class="tables">
 					<tr>
-						<th>Project's name</th>
-						<th>Project's description</th>
+						<th style="color: #ff00aa;">Project's name</th>
+						<th style="color: #ff00aa;">Project's description</th>
 					</tr>
 					<tr>
 						<td>Transcendence</td>
-						<td>MSN LIKE</td>
+						<td>Design, develop, and organize a full-stack web application with complete creative freedom. Choose your project
+							concept, select from a wide range of technical modules, and make key architectural decisions. This highly flexible
+							project allows you to explore modern web development while demonstrating your technical skills and creativity
+							through a modular approach.</td>
 					</tr>
 					<tr>
 						<td>Webserv</td>
-						<td>rézo</td>
+						<td>This project aims to create your own HTTP server. You will be able to test it with a real web browser. HTTP is one
+							of the most used protocols on the internet. Knowing its intricacies will be useful, even if web development is not on
+							your carreer path. </td>
 					</tr>
 					<tr>
 						<td>Inception</td>
-						<td>Dockeeeerzzzz</td>
+						<td>Broaden your system administration skills by working with Docker. In this project, you'll set up a complete
+							infrastructure using Docker Compose, creating and managing multiple containerized services including NGINX
+							with SSL/TLS, WordPress with php-fpm, and MariaDB. You'll gain hands-on experience with containerization,
+							networking, volume management, and secure web service deployment within your own personal virtual machine.</td>
 					</tr>
 
 				</table>
@@ -175,20 +217,16 @@
 				<div class="table-title">Expérience professionnelle</div>
 					<table class="tables">
 					<tr>
-						<th>Company</th>
-						<th>Job's description</th>
+						<th style="color: #ff00aa;">Company</th>
+						<th style="color: #ff00aa;">Job's description</th>
 					</tr>
 					<tr>
-						<td>Wizivent</td>
-						<td>Clamser</td>
-					</tr>
-					<tr>
-						<td>Papier Tigre</td>
-						<td>Mourir</td>
-					</tr>
-					<tr>
-						<td>Autre boulot</td>
-						<td>insignifiant</td>
+						<td>Weezevent</td>
+						<td>Formation et onboarding de clients sur des solutions SaaS complexes (billetterie, cashless, contrôle d'accès)
+							Gestion de projets techniques en conditions réelles sur des événements de grande envergure (Hellfest, Les Ardentes)
+							Pilotage d'équipes opérationnelles et résolution de problèmes critiques en temps réel
+							Analyse de données post-événements et création de rapports de performance pour optimiser les processus (Grafana)
+							Support technique niveau 2 et identification de bugs pour amélioration produit</td>
 					</tr>
 
 				</table>
@@ -204,9 +242,9 @@
 
 
 				<h3>Infos</h3>
-				<p>Création : Aujourd'hui</p>
-				<p>Visites : 7 000 000+</p>
-				<p>Offres d'emploi reçues : 9 596 137</p>
+				<p><strong>Création : </strong>Aujourd'hui</p>
+				<p><strong>Visites : </strong>7 000 000+</p>
+				<p><strong>Offres d'emploi reçues : </strong>9 596 137</p>
 
 
 
@@ -219,10 +257,6 @@
 
 
 		</div>
-
-
-
-
 
 
 	</body>
