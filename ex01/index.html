@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mon super cv</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+		<style>
+			body{
+				margin:0;
+				font-family: Tahoma, Arial, sans-serif;
+				background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+				color:#fff;
+				cursor:url('https://cur.cursors-4u.net/cursors/cur-9/cur817.cur'), auto;
+				}
+
+		
+			header{
+				background: linear-gradient(to right, #ff00aa, #ff66ff);
+				text-align: center;
+				padding: 2rem;
+				border-bottom: 3px solid #000;
+				animation: flashbg 1s infinite alternate;
+			}
+			@keyframes flashbg{
+				from{background-color: #ff00aa;}
+				to{background-color: #ff33cc;}
+			}
+			header h1{
+				font-size: 3.5rem;
+				margin: 0;
+				color: yellow;
+				text-shadow: 4px 4px 0 #000, 0 0 10px #fff;
+				font-family: "Comic Neue", cursive, sans-serif;
+				font-weight: 700;
+				text-align: center;
+			}
+			.container{
+				display: grid;
+				grid-template-columns: 400px 10fr 400px;
+				gap: 10px;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem;
+			}
+			.sidebar{
+				background: #111;
+				padding: 1rem;
+				border: 3px dashed #00ff00;
+				font-size: 0.9rem;
+				color: #0f0;
+				text-align: justify;
+
+			}
+			.sidebar h3{
+				background: #00ff00;
+				color: #000;
+				font-size: 1.1rem;
+				margin-top: 0;
+				padding: 0.2rem 0.5rem;
+				font-family: "Comic Neue", cursive, sans-serif;
+				text-align: center;
+			}
+			.content{
+				background: #111;
+				padding: 1rem;
+				border: 5px groove #ff00aa;
+			}
+			.tables{
+				background: #111;
+				font-family: "Comic Neue", cursive, sans-serif;
+				border: 2px;
+				border-style: solid;
+				border-collapse: collapse;
+				border-color: #ff00aa;
+				margin-bottom: 25px;
+				text-align: center;
+			}
+			.tables th,
+			.tables td{
+				border: 1px solid #ff00aa;
+				padding: 10px;
+			}
+			.table-title{
+				font-size: 1.5rem;
+				margin: 0 0 0.5rem;
+				color: #ff00aa;
+				text-shadow: 1px 1px 0 #000;
+				font-family: "Comic Neue", cursive, sans-serif;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>★ Faustine Crocq ★</h1>
+		</header>
+		<!-- Ici on integre le texte defilant. Remplacer <marquee></marquee> -->
+		<h2>Développeuse full-stack juniore</h2>
+
+		<div class="container">
+
+
+			<!-- Sidebar content: profile, infos, formation -->
+			<aside class="sidebar">
+				<p><img src="images/snoopppY.jpg" alt="Snoopy"></p>
+				<h3>Contact</h3>
+				<ul>
+					<li>hello@faustoche.com</li>
+					<li>0600000000</li>
+					<li>Paris</li>
+				</ul>
+
+
+				<h3>Compétences</h3>
+				<ul>
+					<li>Langages: C, C++, Typescript, HTML/CSS</li>
+					<li>DevOps: Docker, Docker Compose, Git</li>
+					<li>Frontend: Tailwind CSS</li>
+					<li>Backend: Fastify with Node.js</li>
+					<li>Gestion de projet et coordination d'équipes</li>
+					<li>Résolution de problèmes sous pression</li>
+					<li>Architecture logicielle et design patterns</li>
+					<li>Relation client et pédagogie (formation utilisateurs)</li>
+				</ul>
+
+				<h3>Langues</h3>
+				<ol>
+					<li>Français (natif)</li>
+					<li>Anglais (courant)</li>
+					<li>Espagnol (intermédiaire)</li>
+					<li>Russe (intermédiaire)</li>
+				</ol>
+				
+				<h3>Bénévolat</h3>
+				<ul>
+					<li>Garorock: accueil du public</li>
+					<li>Rock en Seine: gestion des flux</li>
+					<li>Beauregard: billetterie</li>
+					<li>La Route du Rock: nettoyage du site</li>
+					<li>We Love Green: gestion des écocups</li>
+					<li>Fondation GoodPlanet: accueil du public, prise de caisse au bar et en boutique, aide au montage et démontage</li>
+				</ul>
+			</aside>
+
+
+
+			<!-- Main content (with tables) -->
+			<main class="content">
+
+				<div class="table-title">Projets 42</div>
+					<table class="tables">
+					<tr>
+						<th>Project's name</th>
+						<th>Project's description</th>
+					</tr>
+					<tr>
+						<td>Transcendence</td>
+						<td>MSN LIKE</td>
+					</tr>
+					<tr>
+						<td>Webserv</td>
+						<td>rézo</td>
+					</tr>
+					<tr>
+						<td>Inception</td>
+						<td>Dockeeeerzzzz</td>
+					</tr>
+
+				</table>
+
+					
+				<div class="table-title">Expérience professionnelle</div>
+					<table class="tables">
+					<tr>
+						<th>Company</th>
+						<th>Job's description</th>
+					</tr>
+					<tr>
+						<td>Wizivent</td>
+						<td>Clamser</td>
+					</tr>
+					<tr>
+						<td>Papier Tigre</td>
+						<td>Mourir</td>
+					</tr>
+					<tr>
+						<td>Autre boulot</td>
+						<td>insignifiant</td>
+					</tr>
+
+				</table>
+			</main>
+
+			<aside class="sidebar">
+				<h3>Formation</h3>
+				<ul>
+					<li>2024 - 2026 | École 42</li>
+					<li>2018 - 2020 | Master Événementiel et Rencontres d'Affaires</li>
+					<li>2015 - 2018 | Licence de tourisme - Spécialisation Événementiel</li>
+				</ul>
+
+
+				<h3>Infos</h3>
+				<p>Création : Aujourd'hui</p>
+				<p>Visites : 7 000 000+</p>
+				<p>Offres d'emploi reçues : 9 596 137</p>
+
+
+
+				<h3>Tags</h3>
+				<p class="tags">#smart<br>#intelligente<br>#offrezmoiunjob #groscerveau</p>
+
+
+			</aside>
+
+
+
+		</div>
+
+
+
+
+
+
+	</body>
+</html>
