@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<title>Copy</title>
+
+		<style>
+			.container{
+				display: flex;
+				flex-direction: row;
+				gap: 55px;
+				width: 650px;
+				max-width: 650px;
+			}
+			.header{
+				font-weight: 900;
+				font-size: 1.4rem;
+				border-bottom: solid 1px #CCCCCC;
+				margin-bottom: 25px;
+				padding-bottom: 10px;
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+
+			<section class="section">
+				<header class="header">Frontend</header>
+				<div style="width: 400px;">
+					<p data-value="80" style="width: 80%;">HTML5&nbsp;</p>
+					<progress value="80" max="100"></progress>
+				</div>
+				<div>
+					<p data-value="60" style="width: 60%;">CSS3&nbsp;</p>
+					<progress value="60" max="100" class="p"></progress>
+				</div>
+				<div>
+					<p data-value="50" style="width: 50%;">jQuery&nbsp;</p>
+					<progress value="50" max="100"></progress>
+				</div>
+			</section>
+
+			<section>
+				<header class="header">Backend</header>
+				<div style="width: 400px;">
+					<p data-value="75" style="width: 75%;">Python&nbsp;</p>
+					<progress value="75" max="100"></progress>
+				</div>
+				<div>
+					<p data-value="65" style="width: 65%;">PHP&nbsp;</p>
+					<progress value="65" max="100"></progress>
+				</div>
+				<div>
+					<p data-value="35" style="width: 35%;">Node.js&nbsp;</p>
+					<progress value="35" max="100"></progress>
+				</div>
+			</section>
+
+
+		</div>
+	</body>
+</html>
