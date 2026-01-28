@@ -65,6 +65,7 @@
 				border: 4px;
 				border: inset;
 				border-color: #ff00aa;
+				box-shadow: 0 0 15px #ff00aa;
 			}
 			.container{
 				display: grid;
@@ -100,26 +101,34 @@
 			.tables{
 				background: #111;
 				font-family: "Comic Neue", cursive, sans-serif;
-				/* border: 2px double #ff00aa; */
+				border: 2px double #ff00aa;
 				border-style: solid;
 				border-collapse: collapse;
-				/* border-color: #ff00aa; */
+				border-color: #ff00aa;
 				box-shadow: 0 0 15px #ff00aa;
-				margin-bottom: 25px;
+				margin-bottom: 55px;
 				margin-top: 25px;
 				text-align: center;
+			}
+			.tables tr:last-child td:last-child {
+				border-style: solid;
+				border-width: 2px;
+				border-color: #424242;
 			}
 			.tables th,
 			.tables td{
 				border: 1px solid #ff00aa;
 				padding: 10px;
+				white-space: pre-line;
 			}
 			.table-title{
 				font-size: 1.5rem;
 				margin: 0 0 0.5rem;
+				margin-top: 25px;
 				color: #ff00aa;
 				text-shadow: 1px 1px 0 #000;
 				font-family: "Comic Neue", cursive, sans-serif;
+				font-weight: 700;
 				text-align: center;
 			}
 		
@@ -129,7 +138,7 @@
 		<header>
 			<h1>★ Faustine Crocq ★</h1>
 		</header>
-		<!-- Ici on integre le texte defilant. Remplacer <marquee></marquee> -->
+
 		<div class="marquee">
 			<span>Développeuse full-stack junior avec une expertise en gestion de projets événementiels.
 				Spécialisée en architecture web et DevOps, avec une forte orientation utilisateur.</span>
@@ -192,23 +201,24 @@
 					</tr>
 					<tr>
 						<td>Transcendence</td>
-						<td>Design, develop, and organize a full-stack web application with complete creative freedom. Choose your project
-							concept, select from a wide range of technical modules, and make key architectural decisions. This highly flexible
-							project allows you to explore modern web development while demonstrating your technical skills and creativity
-							through a modular approach.</td>
+						<td>Développement d'un site web full-stack de jeu Pong multijoueurs en temps réel
+							Conception et implémentation de l'interface utilisateur responsive avec Tailwind CSS
+							Gestion du chat en temps réel avec WebSockets et du système de matchmaking
+							Travail en équipe de 5 personnes avec méthodologie agile</td>
 					</tr>
 					<tr>
 						<td>Webserv</td>
-						<td>This project aims to create your own HTTP server. You will be able to test it with a real web browser. HTTP is one
-							of the most used protocols on the internet. Knowing its intricacies will be useful, even if web development is not on
-							your carreer path. </td>
+						<td>Création d'un serveur HTTP conforme à la RFC
+							Gestion des requêtes GET/POST/DELETE
+							Implémentation du multiplexage I/O et gestion asynchrone des connexions
+							Performance : gestion de 255 connexions simultanées</td>
 					</tr>
 					<tr>
 						<td>Inception</td>
-						<td style="border: 1px solid #424242;"">Broaden your system administration skills by working with Docker. In this project, you'll set up a complete
-							infrastructure using Docker Compose, creating and managing multiple containerized services including NGINX
-							with SSL/TLS, WordPress with php-fpm, and MariaDB. You'll gain hands-on experience with containerization,
-							networking, volume management, and secure web service deployment within your own personal virtual machine.</td>
+						<td>Containerisation d'une infrastructure complète (Nginx, WordPress, MariaDB)
+							Configuration de réseaux Docker et gestion des volumes persistants
+							Automatisation du déploiement avec Docker Compose
+							Mise en place de différents services: redis, ftp</td>
 					</tr>
 
 				</table>
@@ -222,11 +232,20 @@
 					</tr>
 					<tr>
 						<td>Weezevent</td>
-						<td style="border: 1px solid #424242;">Formation et onboarding de clients sur des solutions SaaS complexes (billetterie, cashless, contrôle d'accès)
+						<td>Formation et onboarding de clients sur des solutions SaaS complexes (billetterie, cashless, contrôle d'accès)
 							Gestion de projets techniques en conditions réelles sur des événements de grande envergure (Hellfest, Les Ardentes)
 							Pilotage d'équipes opérationnelles et résolution de problèmes critiques en temps réel
 							Analyse de données post-événements et création de rapports de performance pour optimiser les processus (Grafana)
 							Support technique niveau 2 et identification de bugs pour amélioration produit</td>
+					</tr>
+					<tr>
+						<td>Royal Flying Corps</td>
+						<td>
+							Gestion de crise: Combats aériens quotidiens contre le Baron Rouge (résolution de conflits hostile)
+							Maintenance: Entretien mécanique du Sopwith Camel (Niche v1.0).
+							Littérature: Rédaction de manuscrits refusés ("C'était une nuit sombre et orageuse...")
+							Bien-être: Siestes stratégiques sur le toit pour optimisation de la performance cognitive
+						</td>
 					</tr>
 
 				</table>
@@ -235,16 +254,22 @@
 			<aside class="sidebar">
 				<h3>Formation</h3>
 				<ul>
-					<li>2024 - 2026 | École 42</li>
-					<li>2018 - 2020 | Master Événementiel et Rencontres d'Affaires</li>
-					<li>2015 - 2018 | Licence de tourisme - Spécialisation Événementiel</li>
+					<li>École 42</li>
+					<li>Master Événementiel et Rencontres d'Affaires</li>
+						<ul>
+							<li>Semestre d'étude à l'Université de Gestion et de Management de Moscou (Russie)</li>
+						</ul>
+					<li>Licence de tourisme - Spécialisation Événementiel</li>
+						<ul>
+							<li>Semestre d'étude à l'Université de Laurea à Espoo (Finlande)</li>
+						</ul>
 				</ul>
 
 
 				<h3>Infos</h3>
 				<p><strong>Création : </strong>Aujourd'hui</p>
 				<p><strong>Visites : </strong>7 000 000+</p>
-				<p><strong>Offres d'emploi reçues : </strong>9 596 137</p>
+				<p><strong>Offres d'emploi reçues : </strong>6 596 137</p>
 
 
 
