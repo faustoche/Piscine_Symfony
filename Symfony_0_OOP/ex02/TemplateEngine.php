@@ -2,35 +2,27 @@
 
 class TemplateEngineClass {
 
-	public $fileName;
-	public $text;
+	function createFile($hot_beverage) {
 
+		$file_content = file_get_contents("./template.html");
+		$reflection = new ReflectionClass($hot_beverage);
 
-	function createFile($fileName, $text) {
+		# il faut utiliser ca sur l'objet reflection
+		$className = $reflection -> getShortName();
+		$properties = $reflection -> getProperties();
 
-		$file_content = "
-		<!DOCTYPE html>
-		<html>
+		foreach ($properties as $property) {
+			$propertyName = $property -> getName();
+			$methodName = 'get' .ucfirst($propertyName);
 
-		<head>
-			<title>Sentences</title>
-		</head>
+			if (method_exists($hot_beverage, $methodName)) {
+				## appel dynamique on execute la methode sur l'objet origin
+				$value = $hot_beverage->$methodName();
+				$file_content = str_replace('{' . $propertyName . '}', $value, $file_content);
+			}
+		}
+		file_put_contents($className . ".html", $file_content);
 
-		<body>\n";
-
-		#vérification si jamais il est vide
-		if (empty($text))
-			return (print("No text given\n"));
-
-
-		$file_content .= $text -> readData();
-
-		$file_content .= "
-			</body>
-		</html>";
-			
-		#on rend ça dans un fichier nommé en paramètre
-		file_put_contents($fileName, $file_content);
 	}
 }
 
