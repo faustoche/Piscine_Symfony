@@ -5,6 +5,7 @@ function mendeleiev() {
 	$file_content = file_get_contents("ex06.txt");
 	$mendeleiev_tab = explode("\n", $file_content);
 	$html_result = "<table>";
+	$current_col = 0;
 
 	foreach($mendeleiev_tab as $all_elements) {
 
@@ -20,20 +21,29 @@ function mendeleiev() {
 		$weight = explode(":", $properties[3]);
 
 		## Début de la rendition html
-		if ($position[1] == 0)
-			$html_result .= "</tr><tr>";
+		if ($position[1] == 0) {
+			if ($html_result != "<table>")
+				$html_result .= "</tr>\n";
+			$html_result .= "<tr>\n";
+			$current_col = 0;
+		}
 
-		$html_result .= "<td>";
-		$html_result .= "<h4>" . $elements[0] . "</h4>";
-		$html_result .= "<ul>";
-		$html_result .= "<li>" . $weight[1] . "</li>";
-		$html_result .= "<li>" . $symbol[1] . "</li>";
-		$html_result .= "</ul>";
-		$html_result .= "</td>";
+		$empty_case = $position[1] - $current_col;
+		if ($empty_case > 0)
+			$html_result .= str_repeat("<td></td>", $empty_case);
+		$html_result .= "<td style=\"border: 1px solid black; padding:10px\" background>\n";
+		$html_result .= "<h4 style=\"text-align: center\">" . $elements[0] . "</h4>\n";
+		$html_result .= "<ul>\n";
+		$html_result .= "<li>" . $weight[1] . "</li>\n";
+		$html_result .= "<li>" . $symbol[1] . "</li>\n";
+		$html_result .= "</ul>\n";
+		$html_result .= "</td>\n";
+
+		$current_col = $position[1] + 1;
 	}
 
-	$html_result .= "</tr>";
-	$html_result .= "</table>";
+	$html_result .= "</tr>\n";
+	$html_result .= "</table>\n";
 
 	file_put_contents("mendeleiev.html", $html_result);
 }
