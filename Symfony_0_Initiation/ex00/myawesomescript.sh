@@ -1,12 +1,10 @@
 #!/bin/sh
 
-# Curl va permettre de recuperer l'info
-# Grep filtre la ligne interessante
-# Cut nettoie le tout
+# Curl get the info we looking for
+# Grep filter the line we want
+# Cut clean everything
 
-# Bitly renvoit 301 -> Moved permanently
-# Dans le header location de la reponse, on recupere le vrai url
-
-
+# Bitly return 301 ->  Moved permanently
+# In location header of answer, we can get the real url
 
 curl -I --silent $1 | grep "location" | cut -d " " -f 2

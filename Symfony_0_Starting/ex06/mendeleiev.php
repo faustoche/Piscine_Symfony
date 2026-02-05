@@ -8,13 +8,13 @@ function mendeleiev() {
 		<!DOCTYPE html>
 		<html>
 
-		<head>
-			<title>Mendeleiev's table</title>
-		</head>
+		\t<head>
+			\t<title>Mendeleiev's table</title>
+		\t</head>
 
-		<body style=\"background-color: rgb(36, 34, 34); color: white; \">";
+		\t<body style=\"background-color: rgb(36, 34, 34); color: white; \">";
 
-	$html_result .= "<table>";
+	$html_result .= "\n\t\t<table>";
 	$current_col = 0;
 
 	foreach($mendeleiev_tab as $all_elements) {
@@ -27,33 +27,37 @@ function mendeleiev() {
 		$elements = explode(" =", $all_elements);
 		$properties = explode(", ", $elements[1]);
 		$position = explode(":", $properties[0]);
+		$number = explode(":", $properties[1]);
 		$symbol = explode(":", $properties[2]);
 		$weight = explode(":", $properties[3]);
+		$electron = explode(":", $properties[4]);
 
 		## Début de la rendition html
 		if ($position[1] == 0) {
 			if ($html_result != "<table>")
-				$html_result .= "</tr>\n";
-			$html_result .= "<tr>\n";
+				$html_result .= "\n\t\t</tr>\n";
+			$html_result .= "\n\t\t<tr>\n";
 			$current_col = 0;
 		}
 
 		$empty_case = $position[1] - $current_col;
 		if ($empty_case > 0)
-			$html_result .= str_repeat("<td></td>", $empty_case);
-		$html_result .= "<td style=\"border: 1px solid #94206dff; padding:10px; box-shadow: 0 0 15px #ff00aa;\" background>\n";
-		$html_result .= "<h4 style=\"text-align: center; color: #ff00aa\">" . $elements[0] . "</h4>\n";
-		$html_result .= "<ul>\n";
-		$html_result .= "<li>" . $weight[1] . "</li>\n";
-		$html_result .= "<li>" . $symbol[1] . "</li>\n";
-		$html_result .= "</ul>\n";
-		$html_result .= "</td>\n";
+			$html_result .= str_repeat("\t\t\t<td></td>\n", $empty_case);
+		$html_result .= "\t\t\t<td style=\"border: 1px solid #94206dff; padding:30px; box-shadow: 0 0 15px #ff00aa; font-size: 0.8rm;\">\n";
+		$html_result .= "\t\t\t\t<h4 style=\"text-align: center; color: #ff00aa\">" . $elements[0] . "</h4>\n";
+		$html_result .= "\t\t\t\t<ul style=\"padding-left: 0; margin: 0;\">\n";
+		$html_result .= "\t\t\t\t\t<li>" . "Number: " . $number[1] . "</li>\n";
+		$html_result .= "\t\t\t\t\t<li>" . "Weight: " . $weight[1] . "</li>\n";
+		$html_result .= "\t\t\t\t\t<li>" . "Symbol: " . $symbol[1] . "</li>\n";
+		$html_result .= "\t\t\t\t\t<li>" . "Electrons: " . $electron[1] . "</li>\n";
+		$html_result .= "\t\t\t\t</ul>\n";
+		$html_result .= "\t\t\t</td>\n";
 
 		$current_col = $position[1] + 1;
 	}
 
-	$html_result .= "</tr>\n";
-	$html_result .= "</table>\n";
+	$html_result .= "\n\t\t</tr>\n";
+	$html_result .= "\n\t\t</table>\n\t</body>\n</html>";
 
 	file_put_contents("mendeleiev.html", $html_result);
 }
