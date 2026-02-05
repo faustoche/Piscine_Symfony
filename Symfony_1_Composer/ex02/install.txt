@@ -1,0 +1,17 @@
+Exercice 02 : Development requirement
+Objectif : Installer PHPUnit mais uniquement pour le développement.
+
+Prépare le dossier :
+
+Bash
+
+mkdir ex02
+cd ex02
+composer init
+(Valide avec Entrée).
+
+Installe avec l'option --dev :
+
+Bash
+
+composer require --dev phpunit/phpunit

@@ -1,0 +1,127 @@
+1. C'est quoi Composer ?
+
+	Imagine que tu construis une maison (ton site web ou ton application).
+
+	Sans Composer : Tu dois fabriquer toi-même tes briques, ton ciment, 
+	tes fenêtres, ou aller les chercher un par un dans des magasins différents, 
+	les télécharger et les copier dans tes dossiers à la main. 
+	C'est long et dangereux (erreurs de versions).
+
+	Avec Composer : C'est comme un chef de chantier ou un catalogue. 
+	Tu lui dis "J'ai besoin de briques rouges et de fenêtres double vitrage". 
+	Composer va aller les chercher automatiquement sur internet, 
+	vérifier qu'elles sont compatibles entre elles, 
+	et les ranger proprement dans ton projet.
+
+	En gros: c'est un gestionnaire de dépendance
+
+
+2. Que signifie "Installer Globalement" ?
+
+	Quand tu télécharges Composer basiquement, 
+	tu obtiens un fichier appelé composer.phar dans ton dossier actuel.
+
+	Local (pas pratique) : Pour l'utiliser, tu dois être dans ce dossier précis 
+	et taper une commande longue. Si tu changes de dossier, 
+	tu n'as plus accès à l'outil.
+
+	Global (ce qu'on te demande) : On veut pouvoir ouvrir le terminal 
+	n'importe où (sur le bureau, dans tes documents, dans ton projet piscine) 
+	et juste taper le mot composer pour que ça marche.
+
+3. La logique à suivre (L'algorithme d'installation)
+
+	Télécharger l'installateur : 
+	Tu dois récupérer un script PHP depuis le site officiel de Composer (getcomposer.org).
+
+	Vérifier l'intégrité (Sécurité) : 
+	C'est une étape souvent demandée où l'on vérifie une signature 
+	(un code haché SHA-384) pour être sûr que le fichier n'a pas été piraté.
+
+	Exécuter l'installation : 
+	Tu lances le script avec PHP. Cela va créer le fameux fichier composer.phar
+	(une archive exécutable PHP).
+
+	Rendre global (Le cœur de l'exercice) :
+
+	C'est ici que tu dois déplacer ce fichier composer.phar vers un 
+	dossier spécial de ton système.
+
+	Ce dossier est généralement /usr/local/bin. 
+	C'est un dossier que ton ordinateur scanne automatiquement
+	quand tu tapes une commande.
+
+	En le déplaçant, tu le renommes aussi simplement en composer 
+	(on enlève l'extension .phar pour que ce soit plus joli à taper).
+
+	Permissions : Tu dois dire à ton système "Ce fichier a le droit d'être exécuté 
+	comme un programme" (souvent via la commande chmod).
+
+4. Le rendu ("Files to turn in")
+
+L'énoncé est un peu piégeur. Il dit "Install Composer", mais il demande de rendre "Files and folder from your application". Une fois Composer installé globalement, tu ne peux pas "rendre" l'installation elle-même (car elle est sur ton disque dur, pas dans un dossier que tu envoies).
+
+Généralement, pour valider cet exercice, il faut prouver que ça marche en créant une application vide. La logique une fois l'installation réussie sera de :
+
+Créer ton dossier de rendu ex00.
+
+Entrer dedans.
+
+Lancer la commande d'initialisation de composer (composer init). Cela va te poser des questions et générer un fichier composer.json.
+
+C'est ce fichier et ce dossier que tu devras probablement rendre.
+
+
+
+
+
+
+
+
+
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+php composer-setup.php
+
+php -r "unlink('composer-setup.php');"
+
+sudo mv composer.phar /usr/local/bin/composer
+
+composer --version
+
+cd ex00
+
+composer init
+
+					Appuie sur Entrée à chaque question pour valider les choix par défaut (tu pourras changer plus tard).
+					À la fin, confirme la génération.
+
+
+
+
+
+
+
+
+Exercice 00 : Installation Globale
+Objectif : Installer l'outil et créer un projet vide pour prouver que ça marche.
+
+Installe Composer (exécute ligne par ligne) :
+
+Bash
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+sudo mv composer.phar /usr/local/bin/composer
+(Entre ton mot de passe si demandé).
+
+Prépare le rendu (le dossier ex00) :
+
+Bash
+
+mkdir ex00
+cd ex00
+composer init
+(Appuie sur Entrée à toutes les questions jusqu'à la fin pour valider).

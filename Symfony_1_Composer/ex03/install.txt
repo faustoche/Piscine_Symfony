@@ -1,0 +1,18 @@
+Exercice 03 : Install vs Update
+Objectif : Voir la différence entre les deux commandes.
+
+Prépare le terrain : Crée le dossier ex03. À l'intérieur, crée deux sous-dossiers (ex: dossier_install et dossier_update). Copie le composer.json et le composer.lock (si fournis) dans ces deux dossiers.
+
+Dans le premier dossier :
+
+Bash
+
+composer install
+(Cela va lire le fichier .lock et installer les versions exactes qui y sont figées).
+
+Dans le second dossier :
+
+Bash
+
+composer update
+(Cela va ignorer le fichier .lock, chercher les dernières mises à jour autorisées par le .json, et mettre à jour le fichier .lock).
