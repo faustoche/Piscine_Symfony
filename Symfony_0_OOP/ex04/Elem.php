@@ -1,14 +1,22 @@
 <?php
 
+include ('./MyException.php');
+
 class ElemClass {
 	private $element;
 	private $content;
 	private $children = [];
+	private $attributes = [];
+	private $validBeacons = ['html', 'body', 'div', 'p', 'span', 'h1', 'img', 'table', 'tr', 'th', 'td', 'ul', 'ol', 'li'];
 
 	## content = null pour le rendre optionnel
-	function __construct(string $element, ?string $content = null) {
+	function __construct(string $element, ?string $content = null, array $attributes = []) {
 		$this->element = $element;
 		$this->content = $content;
+		$this->attributes = $attributes;
+
+		if (!in_array($this->element, $this->validBeacons))
+			throw new MyException('Undefined');
 	}
 
 	function pushElement(ElemClass $elem) {
@@ -23,7 +31,13 @@ class ElemClass {
 			'br'
 		);
 
-		$html_content = '<' . $this->element . '>';
+		$html_content = '<' . $this->element;
+
+		foreach ($this->attributes as $key => $value) {
+			$html_content .= " " . $key . "=\"" . $value . "\"";
+		}
+
+		$html_content .= ">";
 
 		## vérifier si le nom de l'objet est une balise orpheline
 		if (in_array($this->element, $orphans)) {
@@ -43,16 +57,5 @@ class ElemClass {
 	}
 }
 
-// try {
-// 			## vérifier si le nom de l'objet est une balise orpheline
-// 			if (in_array($this->element, $orphans)) {
-// 				## Si oui, alors on retourne la balise ouvrante et on arrete
-// 				throw new MyException('Undefined');
-// 			} 
-
-// 		}
-// 		catch (MyException $error) {
-// 			echo $error->errorMessage();
-// 		}
 
 ?>
