@@ -2,8 +2,11 @@
 
 function mendeleiev() {
 
+	## On récupère le contenu du fichiers
 	$file_content = file_get_contents("ex06.txt");
 	$mendeleiev_tab = explode("\n", $file_content);
+
+	## On rempli HTML result avec le début de notre HTML
 	$html_result = "
 		<!DOCTYPE html>
 		<html>
@@ -32,7 +35,7 @@ function mendeleiev() {
 		$weight = explode(":", $properties[3]);
 		$electron = explode(":", $properties[4]);
 
-		## Début de la rendition html
+		## On vérifie la position pour pouvoir commencer le tableau
 		if ($position[1] == 0) {
 			if ($html_result != "<table>")
 				$html_result .= "\n\t\t</tr>\n";
@@ -40,9 +43,12 @@ function mendeleiev() {
 			$current_col = 0;
 		}
 
+		## On vérifie les parties vides du tableau et on les "affiche"
 		$empty_case = $position[1] - $current_col;
 		if ($empty_case > 0)
 			$html_result .= str_repeat("\t\t\t<td></td>\n", $empty_case);
+
+		## On récupère et on affiche les valeurs nombre, poids, symbole et nombre d'électron
 		$html_result .= "\t\t\t<td style=\"border: 1px solid #94206dff; padding:30px; box-shadow: 0 0 15px #ff00aa; font-size: 0.8rm;\">\n";
 		$html_result .= "\t\t\t\t<h4 style=\"text-align: center; color: #ff00aa\">" . $elements[0] . "</h4>\n";
 		$html_result .= "\t\t\t\t<ul style=\"padding-left: 0; margin: 0;\">\n";
@@ -53,9 +59,11 @@ function mendeleiev() {
 		$html_result .= "\t\t\t\t</ul>\n";
 		$html_result .= "\t\t\t</td>\n";
 
+		## On update la position 
 		$current_col = $position[1] + 1;
 	}
 
+	## On ferme le tableau et les balises
 	$html_result .= "\n\t\t</tr>\n";
 	$html_result .= "\n\t\t</table>\n\t</body>\n</html>";
 

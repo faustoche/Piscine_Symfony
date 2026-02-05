@@ -2,9 +2,11 @@
 
 function array2hash($tab){
 
+	## On créé 2 tableaux pour pouvoir stocker les données
 	$result = array();
 	$temp = array();
 
+	##
 	foreach ($tab as $temp) {
 		$result[$temp['age']] = $temp['name'];
 	}
