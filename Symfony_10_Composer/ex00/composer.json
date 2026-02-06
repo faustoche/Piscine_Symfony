@@ -1,0 +1,9 @@
+{
+    "name": "faustoche/ex00",
+    "autoload": {
+        "psr-4": {
+            "Faustoche\\Ex00\\": "src/"
+        }
+    },
+    "require": {}
+}
