@@ -1,1 +1,9 @@
-<h1> Hello World</h1>
+{% extends 'e02/base.html.twig' %}
+
+{% block content %}
+    {{ form(form) }}
+
+    {% if lastLine %}
+        <p> Added last line: {{ lastLine }}</p>
+    {% endif %}
+{% endblock %}
