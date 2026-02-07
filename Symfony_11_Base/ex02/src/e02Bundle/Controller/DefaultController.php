@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Validator\Constraints; // pour noblank
-use Symfony\Component\HttpFoundation; // pour request
-use Symfony\Component\Routing\Attribute;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\HttpFoundation\Request; // pour request
+use Symfony\Component\Routing\Attribute\Route;
 
 class DefaultController extends AbstractController {
 
@@ -31,7 +31,7 @@ class DefaultController extends AbstractController {
 		if ($form->isSubmitted() && $form->isValid()) {
 			$data = $form->getData();
 			$message = $data['message'];
-			$includeTimestamp = $data['includeTimestamp'];
+			$includeTimestamp = $data['include_timestamp'];
 
 			$line = '';
 			if ($includeTimestamp == 'Yes') {
@@ -44,7 +44,7 @@ class DefaultController extends AbstractController {
 
 			file_put_contents($filePath, $line . PHP_EOL, FILE_APPEND);
 			if (file_exists($filePath)) {
-				$lines = $file($filePath);
+				$lines = file($filePath);
 				$lastLine = end($lines);
 				$lastLine = trim($lastLine);
 			}
