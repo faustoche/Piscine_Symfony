@@ -5,7 +5,9 @@ namespace App\e02Bundle\Controller;
 // Les différents apports pour pouvoir utiliser les types de champs
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints; // pour noblank
 use Symfony\Component\HttpFoundation; // pour request
 use Symfony\Component\Routing\Attribute;
@@ -13,7 +15,7 @@ use Symfony\Component\Routing\Attribute;
 class DefaultController extends AbstractController {
 
 	// Exemple du format pour la route : #[Route('/chemin', name: 'nom_route')]
-	#[Route('e02', name:'e02_index')]
+	#[Route('/e02', name:'e02_index')]
 
 	public function indexAction(Request $request) {
 		
@@ -28,10 +30,10 @@ class DefaultController extends AbstractController {
 
 		if ($form->isSubmitted() && $form->isValid()) {
 			$data = $form->getData();
-			$message = $data[$message];
-			$includeTimestamp = $data[$includeTimestamp];
+			$message = $data['message'];
+			$includeTimestamp = $data['includeTimestamp'];
 
-			$line;
+			$line = '';
 			if ($includeTimestamp == 'Yes') {
 				$line = $message . '-' . date('Y-m-d H:i:s');
 			} else {
@@ -42,8 +44,8 @@ class DefaultController extends AbstractController {
 
 			file_put_contents($filePath, $line . PHP_EOL, FILE_APPEND);
 			if (file_exists($filePath)) {
-				$line = $file($filePath);
-				$lastLine = end($line);
+				$lines = $file($filePath);
+				$lastLine = end($lines);
 				$lastLine = trim($lastLine);
 			}
 		}
