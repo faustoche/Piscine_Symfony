@@ -1,0 +1,25 @@
+{% extends 'e03/base.html.twig' %}
+
+{% block content %}
+	<table>
+		<thead>
+			<tr>
+				{% for color in colors %}
+				<th>{{ color }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+
+
+		<tbody>
+			{% for shade in shades %}
+				<tr>
+					{% for color in shade %}
+					<td style="background-color: {{ color }}; width: 80px; height: 40px;"></td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+{% endblock %}
