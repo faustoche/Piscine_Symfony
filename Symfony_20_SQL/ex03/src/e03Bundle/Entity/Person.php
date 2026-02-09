@@ -3,6 +3,8 @@
 namespace App\e03Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Asserts;
 
 ## on ajoute au dessus de chaque propriété les attributs doctrine pour définir le type de colonne
 
@@ -13,12 +15,16 @@ class Person {
     private $id;
 
     #[ORM\Column(type: 'string', unique: true)]
+    #[Assert\NotBlank(message: "Username cannot be empty")]
     private $username;
 
     #[ORM\Column(type: 'string', unique: true)]
+    #[Assert\NotBlank]
     private $name;
 
     #[ORM\Column(type: 'string', unique: true)]
+    #[Assert\NotBlank]
+    #[Assert\Email(message: "The email {{ value}} is not a valid email")]
     private $email;
 
     #[ORM\Column(type: 'boolean')]
@@ -28,6 +34,7 @@ class Person {
     private $birthdate;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank]
     private $address;
 
     ## GETTERS
