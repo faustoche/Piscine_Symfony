@@ -92,7 +92,7 @@ class e08Controller extends AbstractController {
 	#[Route('/e08/add-column', name:'e08_add_column')]
 	public function addColumnAction(Connection $connection): Response {
 
-		$sql = "ALTER TABLE persons ADD COLUMN marital_status VARCHAR(20) DEFAULT 'single'";
+		$sql = "ALTER TABLE persons ADD COLUMN marital_status VARCHAR(20) DEFAULT 'single' CHECK(marital_status IN ('single', 'married', 'widower'))";
 
 		try {
 			$connection->executeStatement($sql);
