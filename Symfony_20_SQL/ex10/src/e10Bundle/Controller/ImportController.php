@@ -23,7 +23,7 @@ class ImportController extends AbstractController
         $sql = "SELECT * FROM sql_data";
         $sqlData = $connection->fetchAllAssociative($sql);
 
-        return $this->render('import/index.html.twig', [
+        return $this->render('index.html.twig', [
             'ormData' => $ormData,
             'sqlData' => $sqlData,
         ]);
