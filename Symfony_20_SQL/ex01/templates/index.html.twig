@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+	{# notification et messages flashs: ici vert #}
+	{% for message in app.flashes('success') %}
+		<div style="color: green; border: 1px solid green; padding: 10px; margin-botton: 10px;">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	{# notification et messages flashs: ici rouge #}
+	{% for message in app.flashes('error') %}
+		<div style="color: red; border: 1px solid red; padding: 10px; margin-botton: 10px;">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+
+	{# Le formulaire ici #}
+	<h3>Form</h3>
+	<form action="/e01/create-table" method="POST">
+		<button type="submit">Create table</button>
+	</form>
+
+
+{% endblock %}
