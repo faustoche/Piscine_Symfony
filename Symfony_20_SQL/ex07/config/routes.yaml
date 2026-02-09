@@ -1,0 +1,5 @@
+controllers:
+    resource:
+        path: ../src/e07Bundle/Controller/
+        namespace: App\e07Bundle\Controller
+    type: attribute
