@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Exercice 14 : SQL Injection</h1>
+
+    {# Affichage des messages Flash #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; background-color: {{ label == 'error' ? '#ffcccc' : '#ccffcc' }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {# État de la table #}
+    <div style="margin-bottom: 20px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd;">
+        <strong>Status de la table :</strong> 
+        {% if table_exists %}
+            <span style="color: green; font-weight: bold;">La table existe</span>
+        {% else %}
+            <span style="color: red; font-weight: bold;">La table n'existe pas</span>
+            <br><br>
+            <a href="{{ path('e14_create_table') }}">
+                <button style="cursor: pointer;">Créer la table</button>
+            </a>
+        {% endif %}
+    </div>
+
+    {% if table_exists %}
+        {# Formulaire Vulnérable #}
+        <div style="border: 2px solid red; padding: 20px; margin-bottom: 20px; background-color: #fff5f5;">
+            <h3 style="color: red; margin-top: 0;">Formulaire Vulnérable</h3>
+            <p>Ce formulaire n'a aucune protection. Le JavaScript va modifier votre saisie pour injecter du SQL.</p>
+            
+            <form action="{{ path('e14_insert') }}" method="POST" id="hackForm">
+                <input type="text" name="data" id="dataInput" placeholder="Entrez un texte..." required style="width: 300px; padding: 5px;">
+                <button type="submit" style="padding: 5px 10px; cursor: pointer;">Envoyer (Launch Injection)</button>
+            </form>
+        </div>
+
+        {# Affichage du contenu de la base #}
+        <h3>Contenu de la table (sql_test_14)</h3>
+        <table border="1" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #eee;">
+                    <th>ID</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row.id }}</td>
+                        <td>{{ row.data }}</td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="2" style="text-align: center;">La table est vide</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {# --- SCRIPT D'ATTAQUE --- #}
+        <script>
+            document.getElementById('hackForm').addEventListener('submit', function(e) {
+                let input = document.getElementById('dataInput');
+                let originalValue = input.value;
+
+                // EXPLICATION DE L'INJECTION :
+                // 1. ')      -> Ferme la chaîne de caractères et la parenthèse du premier INSERT
+                // 2. ;       -> Termine l'instruction SQL
+                // 3. INSERT  -> Commence une NOUVELLE instruction SQL malveillante
+                // 4. --      -> Met en commentaire le reste de la requête originale (la ') finale)
+                
+                let injection = "'); INSERT INTO sql_test_14 (data) VALUES ('HACKED (Injection Réussie)'); --";
+                
+                // Modification à la volée
+                input.value = originalValue + injection;
+                
+                alert("⚠️ ATTENTION : Injection SQL générée par JS !\n\nValeur envoyée au serveur :\n" + input.value);
+            });
+        </script>
+    {% endif %}
+
+{% endblock %}
