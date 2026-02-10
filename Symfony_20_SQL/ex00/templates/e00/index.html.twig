@@ -2,26 +2,25 @@
 
 {% block content %}
 
-	{# notification et messages flashs: ici vert #}
-	{% for message in app.flashes('success') %}
-		<div style="color: green; border: 1px solid green; padding: 10px; margin-botton: 10px;">
-			{{ message }}
-		</div>
-	{% endfor %}
+    {% for message in app.flashes('success') %}
+        <div class="alert" style="color: #155724; background: #d4edda; border-color: #c3e6cb;">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-	{# notification et messages flashs: ici rouge #}
-	{% for message in app.flashes('error') %}
-		<div style="color: red; border: 1px solid red; padding: 10px; margin-botton: 10px;">
-			{{ message }}
-		</div>
-	{% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert" style="color: #721c24; background: #f8d7da; border-color: #f5c6cb;">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-
-	{# Le formulaire ici #}
-	<h3>Form</h3>
-	<form action="/e00/create-table" method="POST">
-		<button type="submit">Create table</button>
-	</form>
-
+    <div class="card">
+        <h3>Database table with SQL</h3>
+        <p>Click to initialize the table.</p>
+        
+        <form action="/e00/create-table" method="POST">
+            <button type="submit">Create table</button>
+        </form>
+    </div>
 
 {% endblock %}

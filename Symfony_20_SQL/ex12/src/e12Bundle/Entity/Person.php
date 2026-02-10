@@ -31,7 +31,7 @@ class Person {
 	private $phone;
 
 	#[ORM\Column(type: 'boolean')]
-	private $enable = true;
+	private $enable;
 
 	#[ORM\Column(type: 'datetime', nullable: true)]
 	private $birthdate;
