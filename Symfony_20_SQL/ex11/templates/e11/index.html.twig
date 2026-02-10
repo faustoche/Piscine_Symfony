@@ -1,0 +1,131 @@
+{% extends 'e11/base.html.twig' %}
+
+{% block body %}
+
+	<h1>Exercice 11 : Filter and sort</h1>
+
+	{# messages flash #}
+	<div style="margin-bottom: 20px;">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="flash-{{ label }}" style="padding: 10px; border: 1px solid #333; background-color: {{ label == 'error' ? '#f8d7da' : '#d4edda' }}; color: {{ label == 'error' ? 'red' : 'green' }}; margin-bottom: 5px;">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+
+
+	<div style="margin-bottom: 20px; border: 1px solid #007bff; padding: 15px; background-color: #f0f8ff;">
+		<h3 style="margin-top: 0;">Database Administration</h3>
+		<p>Please execute these steps in order:</p>
+		<ul style="list-style-type: none; padding-left: 0;">
+			<li style="margin-bottom: 5px;">
+				<strong>Step 1:</strong> 
+				<a href="{{ path('e11_create_table') }}" style="text-decoration: none; color: #0056b3;">
+					Create Table 'persons' (Initial Structure)
+				</a>
+			</li>
+			<li style="margin-bottom: 5px;">
+				<strong>Step 2:</strong> 
+				<a href="{{ path('e11_add_column') }}" style="text-decoration: none; color: #0056b3;">
+					Add Column 'marital_status' (Alter Table)
+				</a>
+			</li>
+			<li style="margin-bottom: 5px;">
+				<strong>Step 3:</strong> 
+				<a href="{{ path('e11_create_relations') }}" style="text-decoration: none; color: #0056b3;">
+					Create Tables 'addresses' & 'bank_accounts' (Relations)
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Filter and sort</h3>
+		<form method="get" action="{{ path('e11_controller_index') }}">
+			<label>Search Name/Username:</label>
+			<input type="text" name="filter_name" value="{{ current_filter }}">
+			
+			<label>Sort by:</label>
+			<select name="sort_by">
+				<option value="p.name" {{ current_sort == 'p.name' ? 'selected' : '' }}>Name</option>
+				<option value="p.birthdate" {{ current_sort == 'p.birthdate' ? 'selected' : '' }}>Birthdate</option>
+				<option value="a.city" {{ current_sort == 'a.city' ? 'selected' : '' }}>City (Joined)</option>
+			</select>
+			
+			<select name="sort_order">
+				<option value="ASC" {{ current_order == 'ASC' ? 'selected' : '' }}>Ascending</option>
+				<option value="DESC" {{ current_order == 'DESC' ? 'selected' : '' }}>Descending</option>
+			</select>
+			
+			<button type="submit">Apply</button>
+			<a href="{{ path('e11_controller_index') }}">Reset</a>
+		</form>
+	
+	
+	
+	
+	</div>
+
+
+	<div style="margin-bottom: 20px; border: 1px solid #ccc; padding: 20px;">
+		<h3>Add a person</h3>
+		{{ form(form) }}
+	</div>
+
+	<div>
+		<h3>Subscribers (Database: persons)</h3>
+		
+		<table border="1" style="width: 100%; border-collapse: collapse;">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>
+						<a href="{{ path('e11_controller_index', {'sort_by': 'p_name', 'sort_order': current_order == 'ASC' ? 'DESC' : 'ASC', 'filter_name': current_filter}) }}">
+							Name {{ current_sort == 'p.name' ? (current_order == 'ASC' ? '▲' : '▼') : '' }}
+						</a>
+					</th>
+					<th>Email</th>
+					<th>Date of birth</th>
+					<th>City (address)</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for person in persons %}
+					<tr>
+						<td>{{ person.id }}</td>
+						<td>{{ person.username }}</td>
+						<td>{{ person.name }}</td>
+						<td>{{ person.email }}</td>
+						<td>{{ person.birthdate }}</td>
+						<td>{{ person.city ? person.city : '-' }}</td>
+
+						
+						<td style="text-align: center;">
+							<a href="{{ path('e11_update', {id: person.id}) }}"
+							   style="color: orange; text-decoration: none; font-weight: bold; margin-right: 10px;">
+								UPDATE
+							</a>
+
+							<a href="{{ path('e11_delete', {id: person.id}) }}"
+							   onclick="return confirm('Are you sure you want to delete this element?');"
+							   style="color: red; text-decoration: none; font-weight: bold;">
+								DELETE
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6" style="text-align: center; padding: 10px;">
+							No one has been found in the table (or table does not exist yet).
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
