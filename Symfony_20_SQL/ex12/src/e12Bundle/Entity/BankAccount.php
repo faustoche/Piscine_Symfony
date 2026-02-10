@@ -18,9 +18,6 @@ class BankAccount {
 	#[ORM\Column(type: 'string')] #[Assert\NotBlank]
 	private $iban;
 
-	#[ORM\ManyToOne(targetEntity: Person::class, inversedBy: 'bankAccounts')] #[ORM\JoinColumn(nullable: false)]
-	private $person;
-
 	public function getId() { return $this->id; }
 	public function getBankName() { return $this->bankName; }
 	public function getIban() { return $this->iban; }

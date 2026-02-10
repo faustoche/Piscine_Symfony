@@ -20,9 +20,6 @@ class Address {
 	#[ORM\Column(type: 'string')] #[Assert\NotBlank]
 	private $zipcode;
 
-	#[ORM\ManyToOne(targetEntity: Person::class, inversedBy: 'addresses')] #[ORM\JoinColumn(nullable: false)]
-	private $person;
-
 	public function getId() { return $this->id; }
 	public function getStreet() { return $this->street; }
 	public function getCity() { return $this->city; }

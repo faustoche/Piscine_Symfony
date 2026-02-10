@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'e12/base.html.twig' %}
 
 {% block content %}
 
@@ -49,6 +49,7 @@
 								<em>No address</em>
 							{% endif %}
 						</td>
+						<td>
 							<a href="{{ path('e12_update', {'id': person.id}) }}" style="text-decoration: none;">
                                 <button type="button" style="cursor: pointer;">Edit</button>
                             </a>

@@ -27,6 +27,9 @@ class Person {
 	#[Assert\Email(message: "The email {{ value }} is not a valid email")]
 	private $email;
 
+	#[ORM\Column(type: 'string', nullable: true)]
+	private $phone;
+
 	#[ORM\Column(type: 'boolean')]
 	private $enable = true;
 
