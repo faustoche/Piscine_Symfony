@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 class DefaultController extends AbstractController {
-	#[Route('/ex00', name:'ex00_index', methods: ['GET'])]
-	public function indexAction() {
+	#[Route('/ex00', name:'ex00_index', methods: ['GET', 'POST'])]
+	public function indexAction(Request $request) {
 		$form = $this->createFormBuilder()
 			->add('create', SubmitType::class, ['label' => 'Create table'])
 			->getForm();
@@ -19,7 +19,7 @@ class DefaultController extends AbstractController {
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-			return $this->redirectToRoute('ex00_create_table');
+			return $this->redirectToRoute('ex00_create_table', [], 307);
 		}
 
 		return $this->render('ex00/index.html.twig', [

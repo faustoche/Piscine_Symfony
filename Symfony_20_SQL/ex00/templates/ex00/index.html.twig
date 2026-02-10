@@ -18,7 +18,7 @@
 		<h3>Database table with SQL</h3>
 		<p>Click to initialize the table.</p>
 		
-		{{ form_start(form) }}
+		{{ form_start(form, {'action': path('ex00_create_table'), 'method': 'POST'}) }}
 			{{ form_widget(form.create, {'attr': {'class': 'btn'}}) }}
 		{{ form_end(form) }}
 	</div>
