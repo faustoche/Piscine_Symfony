@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h2>Updating</h2>
+
+	<div style="margin-bottom: 20px;">
+		<a href="{{ path('e08_controller_index') }}">Back to list</a>
+	</div>
+
+	<div style="margin-bottom: 20px; border: 1px solid #ccc; padding: 20px;">
+		{{ form(form) }}
+	</div>
+
+{% endblock %}

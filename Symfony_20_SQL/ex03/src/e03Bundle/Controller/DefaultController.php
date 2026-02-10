@@ -2,44 +2,53 @@
 
 namespace App\e03Bundle\Controller;
 
+use App\e03Bundle\Entity\Person;
+use App\e03Bundle\Form\PersonType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\StreamOutput;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class DefaultController extends AbstractController {
 
-    #[Route('/e03', name:'e03_index', methods:['GET'])]
+    #[Route('/e03', name:'e03_index', methods:['GET', 'POST'])]
 
-    public function indexAction() {
-        return $this->render('index.html.twig');
-    }
+    public function indexAction(Request $request, EntityManagerInterface $entity) : Response {
 
-    #[Route('/e03/create-table', name:'e03_create_table', methods:['POST'])]
+        ## je récupère la liste existante
+        $persons = $entity->getRepository(Person::class)->findAll();
 
-    public function createTable(KernelInterface $kernel) {
-        $application = new Application($kernel);
-        $application->setAutoExit(false);
+        ## on créé un formulaire
+        $person = new Person();
+        $form = $this->createForm(PersonType::class, $person);
 
-        $input = new ArrayInput(['command' => 'doctrine:schema:update', '--force' => true]);
-        $stream = fopen('php://temp', 'w+');
-        $output = new StreamOutput($stream);
+        ## on submit le formulaire
+        $form->handleRequest($request);
 
-        $statusCode = $application->run($input, $output);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
 
-        ## on retourne en arriere pour lire ce que la commande a repondu
-        rewind($stream);
-        $display = stream_get_contents($stream);
+                ## ne fais pas de query database
+                $entity->persist($person);
+                $entity->flush();
 
-		if ($statusCode == 0)
-			$this->addFlash('success', 'Success!');
-        else {
-			$this->addFlash('error', 'Error: ' . trim($display));
+                $this->addFlash('success', 'Added a new person with success!');
+                return $this->redirectToRoute('e03_index');
+
+            } catch (UniqueConstraintViolationException $error) {
+                ##on gere ici l'erreur du doublon sans crash
+                $this->addFlash('error', "Error: Name or email already in use");
+
+            } catch (\Exception $error) {
+                $this->addFlash('error', 'Error: ' . $error->getMessage());
+            }
         }
 
-        return $this->redirectToRoute('e03_index');
+        return $this->render('index.html.twig', [
+            'form' => $form->createView(),
+            'persons' => $persons
+        ]);
     }
 }

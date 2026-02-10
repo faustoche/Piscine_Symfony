@@ -2,26 +2,54 @@
 
 {% block content %}
 
-	{# notification et messages flashs: ici vert #}
-	{% for message in app.flashes('success') %}
-		<div style="color: green; border: 1px solid green; padding: 10px; margin-botton: 10px;">
-			{{ message }}
-		</div>
-	{% endfor %}
-
-	{# notification et messages flashs: ici rouge #}
-	{% for message in app.flashes('error') %}
-		<div style="color: red; border: 1px solid red; padding: 10px; margin-botton: 10px;">
-			{{ message }}
-		</div>
+	{% for type, messages in app.flashes %}
+		{% for message in messages %}
+			<div style="padding: 10px; margin-bottom: 10px; border: 1px solid {{ type == 'success' ? 'green' : 'red' }}; color: {{ type == 'success' ? 'green' : 'red' }};">
+				{{ message }}
+			</div>
+		{% endfor %}
 	{% endfor %}
 
 
-	{# Le formulaire ici #}
-	<h3>Form</h3>
-	<form action="/e01/create-table" method="POST">
-		<button type="submit">Create table</button>
-	</form>
+	<h3>Add a new person</h3>
 
+	{{ form_start(form) }}
+		{{ form_widget(form) }}
+	{{ form_end(form) }}
+
+	<hr>
+
+		<h3>List</h3>
+		<table border="1" style="width: 100%; border-collapse: collapse;">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Enable</th>
+					<th>Address</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for person in persons %}
+					<tr>
+						<td>{{ person.id }}</td>
+						<td>{{ person.username }}</td>
+						<td>{{ person.name }}</td>
+						<td>{{ person.email }}</td>
+						<td>{{ person.enable }}</td>
+						<td>{{ person.address }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">No one in the database</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</hr>
+	
 
 {% endblock %}

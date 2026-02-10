@@ -1,0 +1,5 @@
+controllers:
+    resource:
+        path: ../src/e09Bundle/Controller/
+        namespace: App\e09Bundle\Controller
+    type: attribute

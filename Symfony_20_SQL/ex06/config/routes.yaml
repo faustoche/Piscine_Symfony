@@ -1,0 +1,5 @@
+controllers:
+    resource:
+        path: ../src/e06Bundle/Controller/
+        namespace: App\e06Bundle\Controller
+    type: attribute

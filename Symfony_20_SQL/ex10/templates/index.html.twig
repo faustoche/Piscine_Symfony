@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Exercice Import File (SQL vs ORM)</h1>
+
+    {# Affichage des messages Flash #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div style="border: 1px solid gray; padding: 10px; margin: 10px 0; background-color: {{ label == 'error' ? '#fdd' : '#dfd' }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div style="margin-bottom: 20px;">
+        <p>Assurez-vous que le fichier <code>source.txt</code> existe à la racine du projet.</p>
+        <a href="{{ path('e10_import_run') }}">
+            <button style="padding: 10px; cursor: pointer; font-weight: bold;">Lancer l'importation du fichier</button>
+        </a>
+        <a href="{{ path('e10_import_clear') }}" style="margin-left: 10px;">
+            <button style="padding: 10px; cursor: pointer; color: red;">Vider les tables</button>
+        </a>
+    </div>
+
+    <div style="display: flex; gap: 20px;">
+        {# Colonne ORM #}
+        <div style="flex: 1; border: 1px solid #ccc; padding: 10px;">
+            <h3>Données via ORM (Entity)</h3>
+            <p>Table : <em>orm_data</em></p>
+            <table border="1" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Content</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in ormData %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.content }}</td>
+                            <td>{{ item.importedAt|date('H:i:s') }}</td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="3">Aucune donnée ORM</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {# Colonne SQL #}
+        <div style="flex: 1; border: 1px solid #ccc; padding: 10px;">
+            <h3>Données via SQL (Raw)</h3>
+            <p>Table : <em>sql_data</em></p>
+            <table border="1" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Raw Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in sqlData %}
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.raw_content }}</td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="2">Aucune donnée SQL</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
