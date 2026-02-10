@@ -13,10 +13,10 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class EmployeeController extends AbstractController {
 
-    #[Route('/employees', name: 'employee_index')]
+    #[Route('/e13', name: 'employee_index')]
     public function index(EntityManagerInterface $em): Response {
         $employees = $em->getRepository(Employee::class)->findAll();
-        return $this->render('employee/index.html.twig', ['employees' => $employees]);
+        return $this->render('e13/index.html.twig', ['employees' => $employees]);
     }
 
     // one road to create and edit
@@ -51,7 +51,7 @@ class EmployeeController extends AbstractController {
             }
         }
 
-        return $this->render('employee/form.html.twig', [
+        return $this->render('e13/form.html.twig', [
             'form' => $form->createView(),
             'title' => $title
         ]);
