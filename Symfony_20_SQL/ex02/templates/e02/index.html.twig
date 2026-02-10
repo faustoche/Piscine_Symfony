@@ -1,51 +1,72 @@
 {% extends 'e02/base.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-    <h1>Exercice 02 : SQL and form</h1>
+    <div class="card" style="min-width: 80%; margin-top: 20px;">
+        <h2>Insert and read with SQL</h2>
 
-    {# --- PARTIE 1 : LE FORMULAIRE SYMFONY --- #}
-    <div style="margin-bottom: 30px; border: 1px solid #ccc; padding: 20px;">
-        <h3>Add a person</h3>
-        
-        {# C'est cette ligne magique qui affiche tous tes champs (add) et ton bouton #}
-        {{ form(form) }}
+        {# FORM #}
+        <div style="margin-bottom: 40px; padding: 20px; border-bottom: 1px solid #eee; text-align: left;">
+            <h3 style="text-align: center;">Add a person</h3>
+            
+            <div class="symfony-form">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="submit">Save</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        {# RESULTS #}
+        <div>
+            <h3>Subscribers (Database)</h3>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f8f9fa;">
+                        <th style="padding: 12px; border: 1px solid #ddd;">ID</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Username</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Name</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Email</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Date of birth</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for person in persons %}
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.id }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.username }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.name }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.email }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.birthdate }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.address }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" style="padding: 20px; text-align: center; border: 1px solid #ddd;">
+                                No one has been found in the table.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    {# --- PARTIE 2 : LE TABLEAU DES RÉSULTATS --- #}
-    <div>
-        <h3>Subscribers (Database)</h3>
-        
-        <table border="1" style="width: 100%; border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Date of birth</th>
-                    <th>Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                {# On boucle sur la variable 'persons' envoyée par le contrôleur #}
-                {% for person in persons %}
-                    <tr>
-                        <td>{{ person.id }}</td>
-                        <td>{{ person.username }}</td>
-                        <td>{{ person.name }}</td>
-                        <td>{{ person.email }}</td>
-                        <td>{{ person.birthdate }}</td>
-                        <td>{{ person.address }}</td>
-                    </tr>
-                {# Si la liste est vide, on affiche un message #}
-                {% else %}
-                    <tr>
-                        <td colspan="6">No one has been found in the table.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <style>
+        /* Petit ajout pour que les champs Symfony soient jolis dans la card */
+        .symfony-form div { margin-bottom: 15px; }
+        .symfony-form label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .symfony-form input, .symfony-form select, .symfony-form textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
 
 {% endblock %}

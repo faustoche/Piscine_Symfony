@@ -1,52 +1,66 @@
 {% extends 'e13/base.html.twig' %}
 
 {% block content %}
-    <h2>Employee List</h2>
-    <a href="{{ path('employee_save') }}">Create New Employee</a>
-    
-    {# Affichage des messages Flash #}
+    {# Notifications centrées #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
-            <div class="alert alert-{{ label }}" style="color: {{ label == 'error' ? 'red' : 'green' }}">
+            <div class="alert" style="color: {{ label == 'error' ? '#721c24' : '#155724' }}; background-color: {{ label == 'error' ? '#f8d7da' : '#d4edda' }}; border-color: {{ label == 'error' ? '#f5c6cb' : '#c3e6cb' }}; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid;">
                 {{ message }}
             </div>
         {% endfor %}
     {% endfor %}
 
-    <table border="1" style="width:100%; margin-top: 15px; border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Email</th>
-                <th>Manager</th>
-                <th>Active</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for emp in employees %}
-                <tr>
-                    <td>{{ emp.firstname }} {{ emp.lastname }}</td>
-                    <td>{{ emp.position }}</td>
-                    <td>{{ emp.email }}</td>
-                    <td>
-                        {% if emp.manager %}
-                            {{ emp.manager.firstname }} {{ emp.manager.lastname }}
-                        {% else %}
-                            -
-                        {% endif %}
-                    </td>
-                    <td>{{ emp.active ? 'Yes' : 'No' }}</td>
-                    <td>
-                        <a href="{{ path('employee_save', {id: emp.id}) }}">[Edit]</a>
-                        <a href="{{ path('employee_delete', {id: emp.id}) }}" 
-                           onclick="return confirm('Delete?')" style="color:red;">[Delete]</a>
-                    </td>
+    <div class="card" style="min-width: 95%; margin-top: 20px;">
+        <h2>ORM - Complete CRUD operations - Employees</h2>
+        
+        <div style="margin-bottom: 25px;">
+            <a href="{{ path('employee_save') }}" style="text-decoration: none;">
+                <button type="button" style="background-color: #2563eb; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                    + Create New Employee
+                </button>
+            </a>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="background-color: #f8f9fa;">
+                    <th style="padding: 12px; border: 1px solid #ddd;">Name</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Position</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Email</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Manager</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Active</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; text-align: center;">Actions</th>
                 </tr>
-            {% else %}
-                <tr><td colspan="6">No employees found.</td></tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">{{ emp.firstname }} {{ emp.lastname }}</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">{{ emp.position }}</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">{{ emp.email }}</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">
+                            {% if emp.manager %}
+                                {{ emp.manager.firstname }} {{ emp.manager.lastname }}
+                            {% else %}
+                                <span style="color: #999;">-</span>
+                            {% endif %}
+                        </td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">{{ emp.active ? 'Yes' : 'No' }}</td>
+                        <td style="padding: 10px; border: 1px solid #ddd; text-align: center; white-space: nowrap;">
+                            <div style="display: flex; gap: 8px; justify-content: center;">
+                                <a href="{{ path('employee_save', {id: emp.id}) }}" style="text-decoration: none;">
+                                    <button type="button" style="background: transparent; color: #f59e0b; border: 1px solid #f59e0b; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">EDIT</button>
+                                </a>
+                                <a href="{{ path('employee_delete', {id: emp.id}) }}" onclick="return confirm('Delete?')" style="text-decoration: none;">
+                                    <button type="button" style="background: transparent; color: #eb255aff; border: 1px solid #eb255aff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">DELETE</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="6" style="padding: 20px; text-align: center; border: 1px solid #ddd; color: #999;">No employees found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
