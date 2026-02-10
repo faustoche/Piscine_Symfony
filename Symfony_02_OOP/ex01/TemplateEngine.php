@@ -13,7 +13,7 @@ class TemplateEngineClass {
 		<html>
 
 		<head>
-			<title>Sentences</title>
+			<title>EX01</title>
 		</head>
 
 		<body>\n";

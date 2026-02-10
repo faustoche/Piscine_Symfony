@@ -7,8 +7,13 @@ class ElemClass {
 	private $content;
 	private $children = [];
 	private $attributes = [];
-	private $validBeacons = ['html', 'body', 'div', 'p', 'span', 'h1', 'img', 'table', 'tr', 'th', 'td', 'ul', 'ol', 'li'];
-
+	private $validBeacons = [
+		'html', 'head', 'body', 'title', 'meta', 'img', 'hr', 'br', 
+		'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
+		'p', 'span', 'div', 
+		'table', 'tr', 'th', 'td', 'ul', 'ol', 'li'
+	];
+	
 	## content = null pour le rendre optionnel
 	function __construct(string $element, ?string $content = null, array $attributes = []) {
 		$this->element = $element;
