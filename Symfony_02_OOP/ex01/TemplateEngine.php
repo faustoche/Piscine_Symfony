@@ -1,6 +1,6 @@
 <?php
 
-class TemplateEngineClass {
+class TemplateEngine {
 
 	public $fileName;
 	public $text;

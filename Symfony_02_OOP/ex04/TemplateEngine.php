@@ -1,10 +1,10 @@
 <?php
 
-class TemplateEngineClass {
+class TemplateEngine {
 
-	private ElemClass $element;
+	private Elem $element;
 
-	function __construct(ElemClass $elem) {
+	function __construct(Elem $elem) {
 		$this->element = $elem;
 	}
 

@@ -1,14 +1,14 @@
 <?php
 
-class HotBeverageClass {
-	function __construct(protected string $nom, protected float $price, protected int $resistance) {
-		$this->nom = $nom;
+class HotBeverage {
+	function __construct(protected string $name, protected float $price, protected int $resistance) {
+		$this->name = $name;
 		$this->price = $price;
 		$this->resistance = $resistance;
 	}
 
-	function getNom() {
-		return $this->nom;
+	function getName() {
+		return $this->name;
 	}
 
 	function getPrice() {

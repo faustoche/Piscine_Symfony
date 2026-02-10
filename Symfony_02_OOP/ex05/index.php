@@ -7,13 +7,13 @@ include('./TemplateEngine.php');
 
 echo "\033[1mTest de structure valide\033[0m" . "\n";
 
-$html = new ElemClass('html');
-$head = new ElemClass('head');
-$body = new ElemClass('body');
-$title = new ElemClass('title', 'Bonjour');
-$meta = new ElemClass('meta', null, ['charset' => 'utf-8']);
-$div = new ElemClass('div');
-$p = new ElemClass('p', 'I love Esnupi');
+$html = new Elem('html');
+$head = new Elem('head');
+$body = new Elem('body');
+$title = new Elem('title', 'Bonjour');
+$meta = new Elem('meta', null, ['charset' => 'utf-8']);
+$div = new Elem('div');
+$p = new Elem('p', 'I love Esnupi');
 
 $head->pushElement($title);
 $head->pushElement($meta);
@@ -33,8 +33,8 @@ echo "----------------------------------------" . "\n";
 
 echo "\033[1mTest de structure invalide - sans head\033[0m" . "\n";
 
-$html_bad = new ElemClass('html');
-$body_bad = new ElemClass('body');
+$html_bad = new Elem('html');
+$body_bad = new Elem('body');
 
 $html_bad->pushElement($body_bad);
 
@@ -47,8 +47,8 @@ echo "----------------------------------------" . "\n";
 
 echo "\033[1mTest de structure invalide - mauvais p\033[0m" . "\n";
 
-$p_bad = new ElemClass('p', 'I really love Snoopy');
-$span_bad = new ElemClass('span', 'I shouldn\'t be there');
+$p_bad = new Elem('p', 'I really love Snoopy');
+$span_bad = new Elem('span', 'I shouldn\'t be there');
 
 $p_bad->pushElement($span_bad);
 

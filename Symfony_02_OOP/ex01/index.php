@@ -11,8 +11,8 @@ $array = array(
 );
 
 # New objects
-$my_strings = new TextClass($array);
-$template = new TemplateEngineClass();
+$my_strings = new Text($array);
+$template = new TemplateEngine();
 
 # Using append function to add new sentences 
 $my_strings -> append("Chien et chat");

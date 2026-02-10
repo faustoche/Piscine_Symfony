@@ -1,6 +1,6 @@
 <?php
 
-class TextClass {
+class Text {
 	
 	public $strings;
 	

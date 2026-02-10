@@ -1,6 +1,6 @@
 <?php
 
-class ElemClass {
+class Elem {
 	private $element;
 	private $content;
 	private $children = [];
@@ -11,7 +11,7 @@ class ElemClass {
 		$this->content = $content;
 	}
 
-	function pushElement(ElemClass $elem) {
+	function pushElement(Elem $elem) {
 		array_push($this->children, $elem);
 	}
 

@@ -2,7 +2,7 @@
 
 include ('./MyException.php');
 
-class ElemClass {
+class Elem {
 	private $element;
 	private $content;
 	private $children = [];
@@ -24,7 +24,7 @@ class ElemClass {
 			throw new MyException('Undefined');
 	}
 
-	function pushElement(ElemClass $elem) {
+	function pushElement(Elem $elem) {
 		array_push($this->children, $elem);
 	}
 

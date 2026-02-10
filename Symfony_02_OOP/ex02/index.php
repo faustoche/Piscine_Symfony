@@ -5,10 +5,10 @@ include('./Coffee.php');
 include('./Tea.php');
 include('./TemplateEngine.php');
 
-$template = new TemplateEngineClass();
+$template = new TemplateEngine();
 
 ## Création de l'objet coffee?
-$myCoffee = new CoffeeClass(
+$myCoffee = new Coffee(
 	"Un café latte vanille",  #description
 	"Froid", #comment
 	"Vanilla latte", #nom
@@ -17,7 +17,7 @@ $myCoffee = new CoffeeClass(
 );
 
 ## Création de l'objet tea
-$myTea = new TeaClass(
+$myTea = new Tea(
 	"Un thé noir puissant",  #description
 	"Infusé", #comment
 	"Earl Grey", #nom

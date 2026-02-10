@@ -1,11 +1,11 @@
 <?php
 
-class TemplateEngineClass {
+class TemplateEngine {
 
-	function createFile($hot_beverage) {
+	function createFile(HotBeverage $hot_beverage) {
 
 		$file_content = file_get_contents("./template.html");
-		$reflection = new ReflectionClass($hot_beverage);
+		$reflection = new Reflection($hot_beverage);
 
 		# il faut utiliser ca sur l'objet reflection
 		$className = $reflection -> getShortName();
