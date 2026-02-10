@@ -34,7 +34,7 @@ class Elem {
 		if ($this->content != null) {
 			$html_content .= $this->content;
 		}
-			
+
 		foreach ($this->children as $child) {
 			$html_content .= $child -> getHTML();
 		}
