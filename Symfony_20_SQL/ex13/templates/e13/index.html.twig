@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h2>Employee List</h2>
+    <a href="{{ path('employee_save') }}">Create New Employee</a>
+    
+    {# Affichage des messages Flash #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}" style="color: {{ label == 'error' ? 'red' : 'green' }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <table border="1" style="width:100%; margin-top: 15px; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Email</th>
+                <th>Manager</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in employees %}
+                <tr>
+                    <td>{{ emp.firstname }} {{ emp.lastname }}</td>
+                    <td>{{ emp.position }}</td>
+                    <td>{{ emp.email }}</td>
+                    <td>
+                        {% if emp.manager %}
+                            {{ emp.manager.firstname }} {{ emp.manager.lastname }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>{{ emp.active ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <a href="{{ path('employee_save', {id: emp.id}) }}">[Edit]</a>
+                        <a href="{{ path('employee_delete', {id: emp.id}) }}" 
+                           onclick="return confirm('Delete?')" style="color:red;">[Delete]</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="6">No employees found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

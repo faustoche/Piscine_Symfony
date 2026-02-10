@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h2>{{ title }}</h2>
+    <a href="{{ path('employee_index') }}">Back to list</a>
+    
+    <div style="margin-top: 20px; border: 1px solid #ccc; padding: 20px;">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
