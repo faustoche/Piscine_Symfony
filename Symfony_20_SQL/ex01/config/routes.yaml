@@ -1,5 +1,15 @@
 controllers:
     resource:
-        path: ../src/e01Bundle/Controller/
-        namespace: App\e01Bundle\Controller
+        path: ../src/ex01Bundle/Controller/
+        namespace: App\ex01Bundle\Controller
     type: attribute
+
+ex01_index:
+    path: /ex01
+    controller: App\ex01Bundle\Controller\DefaultController::indexAction
+    methods: [GET, POST]
+
+ex01_create_table:
+    path: /ex01/create-table
+    controller: App\ex01Bundle\Controller\DefaultController::createTable
+    methods: [POST]

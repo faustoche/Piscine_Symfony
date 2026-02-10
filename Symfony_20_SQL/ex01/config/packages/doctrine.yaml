@@ -19,8 +19,8 @@ doctrine:
             App:
                 type: attribute
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/e01Bundle/Entity'
-                prefix: 'App\e01Bundle\Entity'
+                dir: '%kernel.project_dir%/src/ex01Bundle/Entity'
+                prefix: 'App\ex01Bundle\Entity'
                 alias: App
 
 when@test:

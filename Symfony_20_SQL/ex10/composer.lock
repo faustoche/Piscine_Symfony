@@ -977,12 +977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "b9c49ad3558bb77ef973f4e173f2e9c2eca9be10"
+                "reference": "b9c49ad3558bb77ef973f4e173f2e9c2eca9bex10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/b9c49ad3558bb77ef973f4e173f2e9c2eca9be10",
-                "reference": "b9c49ad3558bb77ef973f4e173f2e9c2eca9be10",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/b9c49ad3558bb77ef973f4e173f2e9c2eca9bex10",
+                "reference": "b9c49ad3558bb77ef973f4e173f2e9c2eca9bex10",
                 "shasum": ""
             },
             "require": {
@@ -2101,12 +2101,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "99d7e101826e6610606b9433248f80c1997cd20b"
+                "reference": "99d7ex101826e6610606b9433248f80c1997cd20b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/99d7e101826e6610606b9433248f80c1997cd20b",
-                "reference": "99d7e101826e6610606b9433248f80c1997cd20b",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/99d7ex101826e6610606b9433248f80c1997cd20b",
+                "reference": "99d7ex101826e6610606b9433248f80c1997cd20b",
                 "shasum": ""
             },
             "require": {

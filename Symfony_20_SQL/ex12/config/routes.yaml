@@ -1,5 +1,25 @@
 controllers:
     resource:
-        path: ../src/e12Bundle/Controller/
-        namespace: App\e12Bundle\Controller
+        path: ../src/ex12Bundle/Controller/
+        namespace: App\ex12Bundle\Controller
     type: attribute
+
+ex12_index:
+    path: /ex12
+    controller: App\ex12Bundle\Controller\ex12Controller::indexAction
+    methods: [GET, POST]
+
+ex12_index_slash:
+    path: /ex12/
+    controller: App\ex12Bundle\Controller\ex12Controller::indexAction
+    methods: [GET, POST]
+
+ex12_update:
+    path: /ex12/update/{id}
+    controller: App\ex12Bundle\Controller\ex12Controller::updateAction
+    methods: [GET, POST]
+
+ex12_delete:
+    path: /ex12/delete/{id}
+    controller: App\ex12Bundle\Controller\ex12Controller::deleteAction
+    methods: [POST]

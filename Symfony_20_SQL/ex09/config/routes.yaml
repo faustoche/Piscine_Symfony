@@ -1,5 +1,20 @@
 controllers:
     resource:
-        path: ../src/e09Bundle/Controller/
-        namespace: App\e09Bundle\Controller
+        path: ../src/ex09Bundle/Controller/
+        namespace: App\ex09Bundle\Controller
     type: attribute
+
+ex09_index:
+    path: /ex09
+    controller: App\ex09Bundle\Controller\DefaultController::indexAction
+    methods: [GET, POST]
+
+ex09_index_slash:
+    path: /ex09/
+    controller: App\ex09Bundle\Controller\DefaultController::indexAction
+    methods: [GET, POST]
+
+ex09_update:
+    path: /ex09/update/{id}
+    controller: App\ex09Bundle\Controller\DefaultController::updateAction
+    methods: [GET, POST]

@@ -1,0 +1,72 @@
+{% extends 'ex02/base.html.twig' %}
+
+{% block content %}
+
+    <div class="card" style="min-width: 80%; margin-top: 20px;">
+        <h2>Insert and read with SQL</h2>
+
+        {# FORM #}
+        <div style="margin-bottom: 40px; padding: 20px; border-bottom: 1px solid #eee; text-align: left;">
+            <h3 style="text-align: center;">Add a person</h3>
+            
+            <div class="symfony-form">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="submit">Save</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        {# RESULTS #}
+        <div>
+            <h3>Subscribers (Database)</h3>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f8f9fa;">
+                        <th style="padding: 12px; border: 1px solid #ddd;">ID</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Username</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Name</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Email</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Date of birth</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for person in persons %}
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.id }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.username }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.name }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.email }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.birthdate }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ person.address }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" style="padding: 20px; text-align: center; border: 1px solid #ddd;">
+                                No one has been found in the table.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        /* Petit ajout pour que les champs Symfony soient jolis dans la card */
+        .symfony-form div { margin-bottom: 15px; }
+        .symfony-form label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .symfony-form input, .symfony-form select, .symfony-form textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+
+{% endblock %}

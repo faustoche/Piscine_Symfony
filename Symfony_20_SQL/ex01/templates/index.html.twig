@@ -20,9 +20,9 @@
         <h3>Database table with ORM</h3> 
         <p style="color: #666; margin-bottom: 20px;">Click to initialize the table.</p>
         
-        <form action="/e01/create-table" method="POST"> 
-            <button type="submit">Create table</button> 
-        </form>
+        {{ form_start(form) }}
+            {{ form_widget(form.create) }}
+        {{ form_end(form) }}
     </div>
 
 {% endblock %}

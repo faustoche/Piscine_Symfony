@@ -1,26 +1,26 @@
-{% extends 'e00/base.html.twig' %}
+{% extends 'ex00/base.html.twig' %}
 
 {% block content %}
 
-    {% for message in app.flashes('success') %}
-        <div class="alert" style="color: #155724; background: #d4edda; border-color: #c3e6cb;">
-            {{ message }}
-        </div>
-    {% endfor %}
+	{% for message in app.flashes('success') %}
+		<div class="alert" style="color: #155724; background: #d4edda; border-color: #c3e6cb;">
+			{{ message }}
+		</div>
+	{% endfor %}
 
-    {% for message in app.flashes('error') %}
-        <div class="alert" style="color: #721c24; background: #f8d7da; border-color: #f5c6cb;">
-            {{ message }}
-        </div>
-    {% endfor %}
+	{% for message in app.flashes('error') %}
+		<div class="alert" style="color: #721c24; background: #f8d7da; border-color: #f5c6cb;">
+			{{ message }}
+		</div>
+	{% endfor %}
 
-    <div class="card">
-        <h3>Database table with SQL</h3>
-        <p>Click to initialize the table.</p>
-        
-        <form action="/e00/create-table" method="POST">
-            <button type="submit">Create table</button>
-        </form>
-    </div>
+	<div class="card">
+		<h3>Database table with SQL</h3>
+		<p>Click to initialize the table.</p>
+		
+		{{ form_start(form) }}
+			{{ form_widget(form.create, {'attr': {'class': 'btn'}}) }}
+		{{ form_end(form) }}
+	</div>
 
 {% endblock %}

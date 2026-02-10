@@ -1,5 +1,25 @@
 controllers:
     resource:
-        path: ../src/e07Bundle/Controller/
-        namespace: App\e07Bundle\Controller
+        path: ../src/ex07Bundle/Controller/
+        namespace: App\ex07Bundle\Controller
     type: attribute
+
+ex07_index:
+    path: /ex07
+    controller: App\ex07Bundle\Controller\DefaultController::indexAction
+    methods: [GET, POST]
+
+ex07_index_slash:
+    path: /ex07/
+    controller: App\ex07Bundle\Controller\DefaultController::indexAction
+    methods: [GET, POST]
+
+ex07_update:
+    path: /ex07/update/{id}
+    controller: App\ex07Bundle\Controller\DefaultController::updateAction
+    methods: [GET, POST]
+
+ex07_delete:
+    path: /ex07/delete/{id}
+    controller: App\ex07Bundle\Controller\DefaultController::deleteAction
+    methods: [POST]

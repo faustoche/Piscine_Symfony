@@ -1,5 +1,25 @@
 controllers:
     resource:
-        path: ../src/e10Bundle/Controller/
-        namespace: App\e10Bundle\Controller
+        path: ../src/ex10Bundle/Controller/
+        namespace: App\ex10Bundle\Controller
     type: attribute
+
+ex10_import_view:
+    path: /ex10/import
+    controller: App\ex10Bundle\Controller\ImportController::index
+    methods: [GET]
+
+ex10_import_view_slash:
+    path: /ex10/import/
+    controller: App\ex10Bundle\Controller\ImportController::index
+    methods: [GET]
+
+ex10_import_run:
+    path: /ex10/import/run
+    controller: App\ex10Bundle\Controller\ImportController::runImport
+    methods: [GET]
+
+ex10_import_clear:
+    path: /ex10/import/clear
+    controller: App\ex10Bundle\Controller\ImportController::clearData
+    methods: [GET]

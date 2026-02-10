@@ -1,5 +1,40 @@
 controllers:
     resource:
-        path: ../src/e11Bundle/Controller/
-        namespace: App\e11Bundle\Controller
+        path: ../src/ex11Bundle/Controller/
+        namespace: App\ex11Bundle\Controller
     type: attribute
+
+ex11_controller_index:
+    path: /ex11
+    controller: App\ex11Bundle\Controller\ex11Controller::indexAction
+    methods: [GET, POST]
+
+ex11_controller_index_slash:
+    path: /ex11/
+    controller: App\ex11Bundle\Controller\ex11Controller::indexAction
+    methods: [GET, POST]
+
+ex11_create_table:
+    path: /ex11/create-table
+    controller: App\ex11Bundle\Controller\ex11Controller::createTableAction
+    methods: [GET]
+
+ex11_add_column:
+    path: /ex11/add-column
+    controller: App\ex11Bundle\Controller\ex11Controller::addColumnAction
+    methods: [GET]
+
+ex11_create_relations:
+    path: /ex11/create-relations
+    controller: App\ex11Bundle\Controller\ex11Controller::createRelationsAction
+    methods: [GET]
+
+ex11_delete:
+    path: /ex11/delete/{id}
+    controller: App\ex11Bundle\Controller\ex11Controller::deleteAction
+    methods: [GET]
+
+ex11_update:
+    path: /ex11/update/{id}
+    controller: App\ex11Bundle\Controller\ex11Controller::updateAction
+    methods: [GET, POST]

@@ -1,5 +1,25 @@
 controllers:
     resource:
-        path: ../src/e06Bundle/Controller/
-        namespace: App\e06Bundle\Controller
+        path: ../src/ex06Bundle/Controller/
+        namespace: App\ex06Bundle\Controller
     type: attribute
+
+ex06_controller_index:
+    path: /ex06
+    controller: App\ex06Bundle\Controller\ex06Controller::indexAction
+    methods: [GET, POST]
+
+ex06_controller_index_slash:
+    path: /ex06/
+    controller: App\ex06Bundle\Controller\ex06Controller::indexAction
+    methods: [GET, POST]
+
+ex06_update:
+    path: /ex06/update/{id}
+    controller: App\ex06Bundle\Controller\ex06Controller::updateAction
+    methods: [GET, POST]
+
+ex06_delete:
+    path: /ex06/delete/{id}
+    controller: App\ex06Bundle\Controller\ex06Controller::deleteAction
+    methods: [GET]

@@ -1,5 +1,30 @@
 controllers:
     resource:
-        path: ../src/e08Bundle/Controller/
-        namespace: App\e08Bundle\Controller
+        path: ../src/ex08Bundle/Controller/
+        namespace: App\ex08Bundle\Controller
     type: attribute
+
+ex08_controller_index:
+    path: /ex08
+    controller: App\ex08Bundle\Controller\ex08Controller::indexAction
+    methods: [GET, POST]
+
+ex08_controller_index_slash:
+    path: /ex08/
+    controller: App\ex08Bundle\Controller\ex08Controller::indexAction
+    methods: [GET, POST]
+
+ex08_create_table:
+    path: /ex08/create-table
+    controller: App\ex08Bundle\Controller\ex08Controller::createTableAction
+    methods: [GET]
+
+ex08_add_column:
+    path: /ex08/add-column
+    controller: App\ex08Bundle\Controller\ex08Controller::addColumnAction
+    methods: [GET]
+
+ex08_create_relations:
+    path: /ex08/create-relations
+    controller: App\ex08Bundle\Controller\ex08Controller::createRelationsAction
+    methods: [GET]

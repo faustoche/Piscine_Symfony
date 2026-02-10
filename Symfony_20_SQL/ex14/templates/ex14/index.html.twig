@@ -1,0 +1,66 @@
+{% extends 'ex14/base.html.twig' %}
+
+{% block content %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert" style="color: {{ label == 'error' ? '#721c24' : '#155724' }}; background-color: {{ label == 'error' ? '#f8d7da' : '#d4edda' }}; border-color: {{ label == 'error' ? '#f5c6cb' : '#c3e6cb' }}; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="card" style="min-width: 90%; margin-top: 20px;">
+        <h2> SQL - Functional injections</h2>
+
+        <div style="margin-bottom: 30px; padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <p><strong>Table status :</strong> 
+                {% if table_exists %}
+                    <span style="color: #16a34a; font-weight: bold;">Table exist</span>
+                {% else %}
+                    <span style="color: #dc2626; font-weight: bold;">Table does not exist</span>
+                    <br><br>
+                    <a href="{{ path('ex14_create_table') }}"><button type="button">Create table</button></a>
+                {% endif %}
+            </p>
+        </div>
+
+        {% if table_exists %}
+            <div style="border: 2px solid #eb255aff; padding: 25px; margin-bottom: 40px; background-color: #fff5f7; border-radius: 8px;">
+                <h3 style="color: #eb255aff; margin-top: 0;">⚠️ Form is vulnerable</h3>
+                
+                {{ form_start(form, {'attr': {'id': 'hackForm'}}) }}
+                    {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+
+            <h3>Table's content</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f8f9fa;">
+                        <th style="padding: 12px; border: 1px solid #ddd; width: 80px;">ID</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ row.id }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ row.data }}</td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="2" style="padding: 20px; text-align: center; border: 1px solid #ddd; color: #999;">Table is empty</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <script>
+                document.getElementById('hackForm').addEventListener('submit', function(e) {
+                    // Le nom du champ généré par Symfony est généralement 'form[data]'
+                    let input = document.querySelector('input[name="form[data]"]');
+                    let injection = "'); INSERT INTO sql_test_14 (data) VALUES ('HACKED (Injection done)'); --";
+                    input.value = input.value + injection;
+                });
+            </script>
+        {% endif %}
+    </div>
+{% endblock %}

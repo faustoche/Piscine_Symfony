@@ -1,5 +1,26 @@
 controllers:
     resource:
-        path: ../src/e13Bundle/Controller/
-        namespace: App\e13Bundle\Controller
+        path: ../src/ex13Bundle/Controller/
+        namespace: App\ex13Bundle\Controller
     type: attribute
+
+employee_index:
+    path: /ex13
+    controller: App\ex13Bundle\Controller\EmployeeController::index
+    methods: [GET]
+
+employee_index_slash:
+    path: /ex13/
+    controller: App\ex13Bundle\Controller\EmployeeController::index
+    methods: [GET]
+
+employee_save:
+    path: /employee/save/{id}
+    controller: App\ex13Bundle\Controller\EmployeeController::save
+    defaults: { id: null }
+    methods: [GET, POST]
+
+employee_delete:
+    path: /employee/delete/{id}
+    controller: App\ex13Bundle\Controller\EmployeeController::delete
+    methods: [POST, GET]

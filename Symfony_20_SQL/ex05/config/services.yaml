@@ -19,7 +19,7 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-            - '../src/e05Bundle/Entity/'
+            - '../src/ex05Bundle/Entity/'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

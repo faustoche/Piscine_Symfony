@@ -1,5 +1,10 @@
 controllers:
     resource:
-        path: ../src/e02Bundle/Controller/
-        namespace: App\e02Bundle\Controller
+        path: ../src/ex02Bundle/Controller/
+        namespace: App\ex02Bundle\Controller
     type: attribute
+
+ex02_controller_index:
+    path: /ex02
+    controller: App\ex02Bundle\Controller\ex02Controller::indexAction
+    methods: [GET, POST]
