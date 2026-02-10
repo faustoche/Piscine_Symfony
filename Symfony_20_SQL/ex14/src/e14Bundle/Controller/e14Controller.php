@@ -57,11 +57,14 @@ class e14Controller extends AbstractController
         $sql = "INSERT INTO sql_test_14 (data) VALUES ('" . $inputData . "')";
 
         try {
-            $connection->executeStatement($sql);
-            $this->addFlash('success', 'Donnée insérée.');
-        } catch (\Exception $e) {
-            $this->addFlash('error', 'Erreur SQL : ' . $e->getMessage());
-        }
+        // Utilisez exec() au lieu de executeStatement() pour permettre plusieurs requêtes
+			$pdo = $connection->getNativeConnection();
+			$pdo->exec($sql);
+			
+			$this->addFlash('success', 'Donnée insérée.');
+		} catch (\Exception $e) {
+			$this->addFlash('error', 'Erreur SQL : ' . $e->getMessage());
+		}
 
         return $this->redirectToRoute('e14_index');
     }
