@@ -12,7 +12,6 @@
 	{% endfor %}
 
 	<div class="card" style="min-width: 95%; margin-top: 20px;">
-		<h2>SQL - Request with join, sort and condition</h2>
 
 		{# --- ADMINISTRATION DE LA BASE --- #}
 		<div style="margin-bottom: 30px; padding: 20px; background-color: #f0f8ff; border: 1px solid #007bff; border-radius: 8px;">
@@ -30,7 +29,18 @@
 			</div>
 		</div>
 
-		{# --- FORMULAIRE DE FILTRE ET TRI --- #}
+
+		{# --- FORMULAIRE D'AJOUT --- #}
+		<div style="margin-bottom: 40px; padding: 20px; border-top: 1px solid #eee;">
+			<h3>Add a person</h3>
+			<div class="symfony-form" style="text-align: left; max-width: 500px; margin: 0 auto;">
+				{{ form_start(form) }}
+					{{ form_widget(form) }}
+				{{ form_end(form) }}
+			</div>
+		</div>
+
+{# --- FORMULAIRE DE FILTRE ET TRI --- #}
 		<div style="margin-bottom: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #ddd;">
 			<form method="get" action="{{ path('ex11_controller_index') }}" style="display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end; justify-content: center;">
 				<div style="text-align: left;">
@@ -56,28 +66,15 @@
 				</div>
 				
 				<div style="display: flex; gap: 10px;">
-					<button type="submit" style="background: #333; color: white; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Apply</button>
+					<button type="submit" style="background: #eb255aff; color: white; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Apply</button>
 					<a href="{{ path('ex11_controller_index') }}" style="text-decoration: none; color: #666; padding: 8px 15px; border: 1px solid #ccc; border-radius: 4px; background: white; font-size: 0.9rem;">Reset</a>
 				</div>
 			</form>
 		</div>
-
-		{# --- FORMULAIRE D'AJOUT --- #}
-		<div style="margin-bottom: 40px; padding: 20px; border-top: 1px solid #eee;">
-			<h3>Add a person</h3>
-			<div class="symfony-form" style="text-align: left; max-width: 500px; margin: 0 auto;">
-				{{ form_start(form) }}
-					{{ form_widget(form) }}
-					<div style="text-align: center; margin-top: 20px;">
-						<button type="submit">Save</button>
-					</div>
-				{{ form_end(form) }}
-			</div>
-		</div>
-
+		
 		{# --- TABLEAU DES RÉSULTATS --- #}
 		<div>
-			<h3>Subscribers (Database: persons)</h3>
+			<h3>Database</h3>
 			<table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left;">
 				<thead>
 					<tr style="background-color: #f8f9fa;">

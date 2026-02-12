@@ -63,11 +63,11 @@ class ImportController extends AbstractController
             $em->flush();
             $em->commit();
 
-            $this->addFlash('success', 'Importation réussie dans les deux tables (SQL & ORM) !');
+            $this->addFlash('success', 'Import done in both tables (SQL & ORM) !');
 
         } catch (\Exception $e) {
             $em->rollback();
-            $this->addFlash('error', 'Erreur lors de l\'import : ' . $e->getMessage());
+            $this->addFlash('error', 'Error while importing : ' . $e->getMessage());
         }
 
         return $this->redirectToRoute('ex10_import_view');

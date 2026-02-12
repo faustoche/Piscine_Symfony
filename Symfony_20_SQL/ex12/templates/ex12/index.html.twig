@@ -12,7 +12,6 @@
 	{% endfor %}
 
 	<div class="card" style="min-width: 95%; margin-top: 20px;">
-		<h2>ORM - Request with join, sort and condition</h2>
 
 		{# --- FORMULAIRE D'AJOUT --- #}
 		<div style="margin-bottom: 40px; padding: 20px; border-bottom: 1px solid #eee;">
@@ -20,9 +19,6 @@
 			<div class="symfony-form" style="text-align: left; max-width: 500px; margin: 0 auto;">
 				{{ form_start(form) }}
 					{{ form_widget(form) }}
-					<div style="text-align: center; margin-top: 20px;">
-						<button type="submit">Save</button>
-					</div>
 				{{ form_end(form) }}
 			</div>
 		</div>
@@ -61,7 +57,7 @@
 
 		{# --- TABLEAU DES RÉSULTATS --- #}
 		<div>
-			<h3>List</h3>
+			<h3>Database</h3>
 			<table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left;">
 				<thead>
 					<tr style="background-color: #f8f9fa;">
