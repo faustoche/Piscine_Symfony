@@ -37,7 +37,11 @@ class ex02Controller extends AbstractController {
             ->add('name', TextType::class)
             ->add('email', TextType::class)
             ->add('enable', CheckboxType::class, ['required' => false])
-            ->add('birthdate', DateType::class, ['widget' => 'single_text'])
+            ->add('birthdate', DateType::class, [
+                'widget' => 'single_text',
+                'required' => false,
+                'label' => 'Birthdate'
+            ])
             ->add('address', TextType::class)
             ->add('save', SubmitType::class, ['label' => 'Add'])
             ->getForm();
