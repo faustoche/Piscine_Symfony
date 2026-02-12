@@ -8,7 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/e03' => [[['_route' => 'e03_index', '_controller' => 'App\\e03Bundle\\Controller\\DefaultController::displayShades'], null, null, null, false, false, null]],
+        '/ex03' => [[['_route' => 'ex03_index', '_controller' => 'App\\ex03Bundle\\Controller\\DefaultController::displayShades'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

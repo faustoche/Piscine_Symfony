@@ -1,0 +1,9 @@
+{% extends 'ex02/base.html.twig' %}
+
+{% block content %}
+    {{ form(form) }}
+
+    {% if lastLine %}
+        <p> Added last line: {{ lastLine }}</p>
+    {% endif %}
+{% endblock %}

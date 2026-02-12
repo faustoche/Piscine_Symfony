@@ -12,13 +12,13 @@ return [
     [ // $regexpList
         0 => '{^(?'
                 .'|/_error/(\\d+)(?:\\.([^/]++))?(*:35)'
-                .'|/e01(?:/([^/]++))?(*:60)'
+                .'|/ex01(?:/([^/]++))?(*:61)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
         35 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        60 => [
-            [['_route' => 'homepage', 'article' => 'main', '_controller' => 'App\\e01Bundle\\Controller\\DefaultController::showPage'], ['article'], null, null, false, true, null],
+        61 => [
+            [['_route' => 'homepage', 'article' => 'main', '_controller' => 'App\\ex01Bundle\\Controller\\DefaultController::showPage'], ['article'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

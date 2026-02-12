@@ -1,5 +1,5 @@
 controllers:
     resource:
-        path: ../src/e03Bundle/Controller/
-        namespace: App\e03Bundle\Controller
+        path: ../src/ex03Bundle/Controller/
+        namespace: App\ex03Bundle\Controller
     type: attribute

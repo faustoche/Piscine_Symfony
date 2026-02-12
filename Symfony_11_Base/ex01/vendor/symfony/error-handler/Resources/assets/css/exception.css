@@ -82,7 +82,7 @@
     --metric-label-color: #e0e0e0;
     --trace-selected-background: #5d5227cc;
     --table-border: #444;
-    --table-background: #333;
+    --table-background: #eb255aff;
     --table-header: #555;
     --info-background: rgba(79, 148, 195, 0.5);
     --tree-active-background: var(--metric-label-background);
