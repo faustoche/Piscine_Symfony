@@ -28,7 +28,7 @@ class PersonType extends AbstractType {
 				'required' => false
 			])
 			->add('address', TextareaType::class)
-			->add('save', SubmitType::class, ['label' => 'Save']);
+			->add('save', SubmitType::class, ['label' => 'Add']);
 	}
 
 

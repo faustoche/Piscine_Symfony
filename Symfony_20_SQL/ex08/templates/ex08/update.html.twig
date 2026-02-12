@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'ex08/base.html.twig' %}
 
 {% block content %}
 
     <div class="card" style="max-width: 600px; margin-top: 20px;">
-        <h2>Updating person</h2>
+        <h2>Updating</h2>
 
         <div style="margin-bottom: 30px;">
             <a href="{{ path('ex08_controller_index') }}" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">
@@ -14,9 +14,6 @@
         <div class="symfony-form" style="text-align: left;">
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <div style="text-align: center; margin-top: 20px;">
-                    <button type="submit">Update details</button>
-                </div>
             {{ form_end(form) }}
         </div>
     </div>

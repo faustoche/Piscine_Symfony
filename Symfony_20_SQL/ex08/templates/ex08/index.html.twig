@@ -12,7 +12,6 @@
     {% endfor %}
 
     <div class="card" style="min-width: 95%; margin-top: 20px;">
-        <h2>SQL - Update table structure, create relations</h2>
 
         {# --- ADMINISTRATION DE LA BASE --- #}
         <div style="margin-bottom: 30px; padding: 20px; background-color: #f0f8ff; border: 1px solid #007bff; border-radius: 8px;">
@@ -38,16 +37,13 @@
             <div class="symfony-form" style="text-align: left; max-width: 500px; margin: 0 auto;">
                 {{ form_start(form) }}
                     {{ form_widget(form) }}
-                    <div style="text-align: center; margin-top: 20px;">
-                        <button type="submit">Save</button>
-                    </div>
                 {{ form_end(form) }}
             </div>
         </div>
 
         {# --- TABLEAU DES RÉSULTATS --- #}
         <div>
-            <h3>Subscribers (Database: persons)</h3>
+            <h3>Database</h3>
             <table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left;">
                 <thead>
                     <tr style="background-color: #f8f9fa;">

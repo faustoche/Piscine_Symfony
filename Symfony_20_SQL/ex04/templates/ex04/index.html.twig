@@ -12,7 +12,6 @@
     {% endfor %}
 
     <div class="card" style="min-width: 90%; margin-top: 20px;">
-        <h2>SQL - Delete using request with condition</h2>
 
         {# FORM #}
         <div style="margin-bottom: 40px; padding: 20px; border-bottom: 1px solid #eee;">
@@ -21,16 +20,13 @@
             <div class="symfony-form" style="text-align: left; max-width: 500px; margin: 0 auto;">
                 {{ form_start(form) }}
                     {{ form_widget(form) }}
-                    <div style="text-align: center; margin-top: 20px;">
-                        <button type="submit">Save</button>
-                    </div>
                 {{ form_end(form) }}
             </div>
         </div>
 
         {# RESULTS #}
         <div>
-            <h3>Subscribers (Database)</h3>
+            <h3>Database</h3>
             
             <table style="width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left;">
                 <thead>

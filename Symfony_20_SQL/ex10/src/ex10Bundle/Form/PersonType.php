@@ -45,7 +45,7 @@ class PersonType extends AbstractType {
 				'label' => 'Bank Accounts'
 			])
 
-			->add('save', SubmitType::class, ['label' => 'Save']);
+			->add('save', SubmitType::class, ['label' => 'Add']);
 	}
 
 	public function configureOptions(OptionsResolver $resolver): void {

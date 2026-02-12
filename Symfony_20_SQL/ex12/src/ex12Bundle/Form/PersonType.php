@@ -30,7 +30,7 @@ class PersonType extends AbstractType {
 			// gestion des relations
 			->add('address', AddressType::class, ['label' => 'Address'])
 			->add('bankAccount', BankAccountType::class, ['label' => 'Bank Info'])
-			->add('save', SubmitType::class, ['label' => 'Save']);
+			->add('save', SubmitType::class, ['label' => 'Add']);
 	}
 
 	public function configureOptions(OptionsResolver $resolver): void {

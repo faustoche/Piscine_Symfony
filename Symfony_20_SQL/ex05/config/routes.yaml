@@ -4,15 +4,15 @@ controllers:
         namespace: App\ex05Bundle\Controller
     type: attribute
 
-ex05_index:
-    path: /ex05
-    controller: App\ex05Bundle\Controller\DefaultController::indexAction
-    methods: [GET, POST]
+# ex05_index:
+#     path: /ex05
+#     controller: App\ex05Bundle\Controller\DefaultController::indexAction
+#     methods: [GET, POST]
 
-ex05_index_slash:
-    path: /ex05/
-    controller: App\ex05Bundle\Controller\DefaultController::indexAction
-    methods: [GET, POST]
+# ex05_index_slash:
+#     path: /ex05/
+#     controller: App\ex05Bundle\Controller\DefaultController::indexAction
+#     methods: [GET, POST]
 
 ex05_delete:
     path: /ex05/delete/{id}

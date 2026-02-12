@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Asserts;
 
 ## on ajoute au dessus de chaque propriété les attributs doctrine pour définir le type de colonne
 
-#[ORM\Entity] #[ORM\Table(name: 'persons')]
+#[ORM\Entity(repositoryClass: \App\ex05Bundle\Repository\PersonRepository::class)] #[ORM\Table(name: 'persons')]
 class Person {
 
     #[ORM\Id] #[ORM\GeneratedValue] #[ORM\Column(type: 'integer')]

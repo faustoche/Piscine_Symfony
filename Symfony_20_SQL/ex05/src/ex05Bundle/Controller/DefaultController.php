@@ -53,7 +53,7 @@ class DefaultController extends AbstractController {
     }
 
     ## une nouvelle fonction pour l'action de delete
-    #[Route('/ex05/delete/{id}', name: 'ex05_delete', methods: ['POST'])]
+    //#[Route('/ex05/delete/{id}', name: 'ex05_delete', methods: ['POST'])]
     public function deleteAction(int $id, EntityManagerInterface $entity): Response {
         $repository = $entity->getRepository(Person::class);
         $person = $repository->find($id);
