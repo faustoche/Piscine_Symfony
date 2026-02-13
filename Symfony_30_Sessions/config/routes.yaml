@@ -4,7 +4,24 @@ controllers:
         namespace: App\ex01Bundle\Controller
     type: attribute
 
+root_redirect:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /e01/
+        permanent: false
+
 ex01_routes:
     resource: ../src/ex01Bundle/Controller/
     type: attribute
     prefix: /e01
+
+ex02_routes:
+    resource: ../src/ex02Bundle/Controller/
+    type: attribute
+    prefix: /e02
+
+ex03_routes:
+    resource: ../src/ex03Bundle/Controller/
+    type: attribute
+    prefix: /e03

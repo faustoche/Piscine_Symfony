@@ -1,0 +1,20 @@
+{% extends 'ex01/base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+    <div class="card" style="max-width: 600px;">
+        <h1>{{ post.title }}</h1>
+        <p style="color: #666; font-size: 0.9em;">
+            By <strong>{{ post.author.username }}</strong> on {{ post.createdDate|date('d/m/Y H:i') }}
+        </p>
+        <hr>
+        <div style="margin: 20px 0; line-height: 1.6;">
+            {{ post.content|nl2br }}
+        </div>
+        
+        <div class="links">
+            <a href="{{ path('app_homepage') }}" class="btn">Back</a>
+        </div>
+    </div>
+{% endblock %}

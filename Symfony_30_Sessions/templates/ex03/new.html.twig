@@ -1,0 +1,13 @@
+{% extends 'ex01/base.html.twig' %}
+
+{% block title %}New post{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <h1>Create an article</h1>
+        {{ form(form) }}
+        <div class="links">
+            <a href="{{ path('app_homepage') }}">Cancel</a>
+        </div>
+    </div>
+{% endblock %}
