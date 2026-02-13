@@ -1,0 +1,24 @@
+{% extends 'ex01/base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <h1>Register</h1>
+
+        {{ form_start(registrationForm) }}
+            {{ form_label(registrationForm.username, "Username") }}
+            {{ form_widget(registrationForm.username) }}
+            
+            {{ form_label(registrationForm.password.first, "Password") }}
+            {{ form_widget(registrationForm.password.first) }}
+            
+            {{ form_label(registrationForm.password.second, "Confirm password") }}
+            {{ form_widget(registrationForm.password.second) }}
+            
+        {{ form_end(registrationForm) }}
+        <div class="links">
+            <a href="{{ path('app_login') }}">I already have an account</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'ex01/base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <div class="card" style="text-align: center;">
+        <h1>Exercice 01</h1>
+
+        {% if app.user %}
+            <div style="background-color: #e99ec1ff; color: #57153fff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <h2>Welcome {{ app.user.username }} !</h2>
+            </div>
+            
+            <a href="{{ path('app_logout') }}" class="btn" style="background-color: #f42887ff;">Log out</a>
+        {% else %}
+            <p>Welcome on this website</p>
+            <a href="{{ path('app_login') }}" class="btn">Log in</a>
+            <a href="{{ path('app_register') }}" class="btn" style="background-color: #f42887ff; margin-top: 10px;">Register</a>
+        {% endif %}
+    </div>
+{% endblock %}

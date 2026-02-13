@@ -1,9 +1,10 @@
 controllers:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/ex01Bundle/Controller/
+        namespace: App\ex01Bundle\Controller
     type: attribute
 
 ex01_routes:
-    path: /e01/
-    controller: App\ex01Bundle\Controller
+    resource: ../src/ex01Bundle/Controller/
+    type: attribute
+    prefix: /e01
