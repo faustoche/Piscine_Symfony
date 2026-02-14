@@ -25,3 +25,13 @@ ex03_routes:
     resource: ../src/ex03Bundle/Controller/
     type: attribute
     prefix: /e03
+
+ex05_routes:
+    resource: ../src/ex05Bundle/Controller/
+    type: attribute
+    prefix: /e05
+
+ex06_routes:
+    resource: ../src/ex06Bundle/Controller/
+    type: attribute
+    prefix: /e06

@@ -21,12 +21,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
 	#[ORM\Column(type: 'json')]
 	private $roles = [];
 
+	// on ajoute la reputation a notre user
+	#[ORM\Column(type: 'integer', options: ['default' => 0])]
+	private $reputation = 0;
+
 
 	// GETTERS
 	public function getId(): ?int { return $this->id; }
 	public function getUserIdentifier(): string { return (string) $this->username; }
 	public function getUsername(): ?string { return $this->username; }
 	public function getPassword(): ?string { return $this->password; }
+	public function getReputation(): ?int { return $this->reputation; }
 	public function getRoles(): array { 
 		return $this->roles;
 		$roles[] = 'ROLE_USER';
@@ -51,6 +56,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
 
     public function setRoles(array $new_roles): self { 
         $this->roles = $new_roles; 
+        return $this; 
+    }
+
+	public function setReputation(int $new_reputation): self { 
+        $this->reputation = $new_reputation; 
         return $this; 
     }
 

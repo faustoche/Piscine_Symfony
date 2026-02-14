@@ -6,15 +6,63 @@
     <div class="card" style="max-width: 600px;">
         <h1>{{ post.title }}</h1>
         <p style="color: #666; font-size: 0.9em;">
-            By <strong>{{ post.author.username }}</strong> on {{ post.createdDate|date('d/m/Y H:i') }}
+            By <strong>{{ post.author.username }} ({{ post.author.reputation }} points)</strong> 
+            on {{ post.createdDate|date('d/m/Y H:i') }}
         </p>
         <hr>
         <div style="margin: 20px 0; line-height: 1.6;">
             {{ post.content|nl2br }}
         </div>
+
+        {# BLOC VOTES #}
+        <div style="margin-bottom: 20px; text-align: center; border-top: 1px solid #eee; padding-top: 15px;">
+            <p style="font-weight: bold; margin-bottom: 10px;">
+                Likes: <span style="color: green;">{{ post.likesCount }}</span> | 
+                Dislikes: <span style="color: red;">{{ post.dislikesCount }}</span>
+            </p>
+            
+            {% if app.user and app.user != post.author %}
+                <div style="display: flex; justify-content: center; gap: 10px;">
+                    
+                    {# Bouton Like : Admin ou Reputation >= 3 #}
+                    {% if is_granted('ROLE_ADMIN') or app.user.reputation >= 3 %}
+                        <a href="{{ path('app_vote', {'id': post.id, 'type': 'like'}) }}" class="btn" style="width: auto; background-color: #28a745; margin: 0;">Like</a>
+                    {% endif %}
+
+                    {# Bouton Dislike : Admin ou Reputation >= 6 #}
+                    {% if is_granted('ROLE_ADMIN') or app.user.reputation >= 6 %}
+                        <a href="{{ path('app_vote', {'id': post.id, 'type': 'dislike'}) }}" class="btn" style="width: auto; background-color: #dc3545; margin: 0;">Dislike</a>
+                    {% endif %}
+                
+                </div>
+                
+                {% if app.user.reputation < 3 %}
+                    <small style="color: #999;">(Need 3 pts to like, 6 pts to dislike)</small>
+                {% elseif app.user.reputation < 6 %}
+                    <small style="color: #999;">(Need 6 pts to dislike)</small>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        {# BLOC EDITION #}
+        {# Visible si : Admin OU Auteur OU Reputation >= 9 #}
+        {% if app.user %}
+            {% if is_granted('ROLE_ADMIN') or app.user == post.author or app.user.reputation >= 9 %}
+                 <div style="text-align: center; margin-bottom: 20px;">
+                    <a href="{{ path('app_post_edit', {'id': post.id}) }}" class="btn" style="background-color: #ffc107; color: black;">Edit Post</a>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {# INFO DERNIERE EDITION #}
+        {% if post.lastEditor %}
+            <p style="font-size: 0.8em; color: #999; text-align: right; font-style: italic;">
+                Last edited by {{ post.lastEditor.username }} on {{ post.lastEditDate|date('d/m/Y H:i') }}
+            </p>
+        {% endif %}
         
         <div class="links">
-            <a href="{{ path('app_homepage') }}" class="btn">Back</a>
+            <a href="{{ path('app_homepage') }}" class="btn" style="background-color: #6c757d;">Back</a>
         </div>
     </div>
 {% endblock %}

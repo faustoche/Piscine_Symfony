@@ -11,7 +11,7 @@
             
             {% if app.user %}
                 {# LOGGED IN USER #}
-                <p>Hello <strong style="color: #28a745;">{{ app.user.username }}</strong> !</p>
+                <p>Hello <strong style="color: #28a745;">{{ app.user.username }} ({{ app.user.reputation }} points)</strong> !</p>
                 
                 <div style="margin-top: 10px;">
                     <a href="{{ path('app_post_new') }}" class="btn" style="background-color: #28a745;">+ New Post</a>
@@ -31,8 +31,6 @@
 
                 <p style="margin-bottom: 15px;">Please log in to publish articles.</p>
 
-                {# CORRECTION : On garde l'affichage vertical standard #}
-                {# On a juste retiré la div "links" pour que le texte reste blanc #}
                 <a href="{{ path('app_login') }}" class="btn">Log in</a>
                 <a href="{{ path('app_register') }}" class="btn">Register</a>
 
@@ -48,10 +46,14 @@
                     </a>
                 </h2>
                 <p style="font-size: 0.9em; color: #777;">
-                    Written by <strong>{{ post.author.username }}</strong> on {{ post.createdDate|date('d/m/Y') }}
+                    Written by <strong>{{ post.author.username }} ({{ post.author.reputation }} points)</strong> on {{ post.createdDate|date('d/m/Y') }}
                 </p>
                 <p>{{ post.content|slice(0, 100) }}...</p>
                 
+                <p style="font-size: 0.8em; color: #555; font-weight: bold;">
+                    Likes: {{ post.likesCount }} | Dislikes: {{ post.dislikesCount }}
+                </p>
+
                 <a href="{{ path('app_post_show', {'id': post.id}) }}" style="color: #007bff; text-decoration: none;">Read more →</a>
             </div>
         {% else %}
