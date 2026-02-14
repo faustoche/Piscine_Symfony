@@ -3,15 +3,14 @@
 {% block title %}Log in{% endblock %}
 
 {% block body %}
-    <div class="card">
-        <h1>Log in</h1>
+    <div class="post">
+        <div class="post-title">Log in</div>
 
         {% if error %}
             <div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
         <form method="post" action="{{ path('app_login') }}">
-            
             <label for="username">Username</label>
             <input type="text" value="{{ last_username }}" name="_username" id="username" autocomplete="username" required autofocus>
 
@@ -20,9 +19,11 @@
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <button type="submit">Log in</button>
-
-            <div class="links">
+            <div style="text-align: center;">
+                <button type="submit" class="btn">Log in</button>
+            </div>
+            
+            <div style="text-align: center; margin-top: 15px;">
                 <a href="{{ path('app_register') }}">Create an account</a>
             </div>
         </form>

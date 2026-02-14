@@ -3,10 +3,15 @@
 {% block title %}New post{% endblock %}
 
 {% block body %}
-    <div class="card">
-        <h1>Create an article</h1>
-        {{ form(form) }}
-        <div class="links">
+    <div class="post">
+        <div class="post-title">Create an article</div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div style="text-align: center;">
+                 <button type="submit" class="btn">Publish</button>
+            </div>
+        {{ form_end(form) }}
+        <div style="text-align: center; margin-top: 15px;">
             <a href="{{ path('app_homepage') }}">Cancel</a>
         </div>
     </div>

@@ -3,64 +3,57 @@
 {% block title %}Homepage{% endblock %}
 
 {% block body %}
-    <div style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 800px; padding: 20px;">
+    
+    <div class="post">
+        <div class="post-title">Welcome to my blog</div>
         
-        {# Welcome Card #}
-        <div class="card" style="text-align: center; margin-bottom: 20px;">
-            <h1>Welcome to my blog</h1>
-            
-            {% if app.user %}
-                {# LOGGED IN USER #}
-                <p>Hello <strong style="color: #28a745;">{{ app.user.username }} ({{ app.user.reputation }} points)</strong> !</p>
-                
-                <div style="margin-top: 10px;">
-                    <a href="{{ path('app_post_new') }}" class="btn" style="background-color: #28a745;">+ New Post</a>
-                    <a href="{{ path('app_logout') }}" class="btn" style="background-color: #6c757d;">Logout</a>
-                </div>
-
-            {% else %}
-                {# ANONYMOUS USER #}
-                {% if anonymous_info is defined and anonymous_info %}
-                    <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #dee2e6;">
-                        <h3 style="margin: 0; color: #495057;">{{ anonymous_info.name }}</h3>
-                        <small style="color: #6c757d;">
-                            Last action: {{ anonymous_info.seconds_since }} seconds ago.
-                        </small>
-                    </div>
-                {% endif %}
-
-                <p style="margin-bottom: 15px;">Please log in to publish articles.</p>
-
-                <a href="{{ path('app_login') }}" class="btn">Log in</a>
-                <a href="{{ path('app_register') }}" class="btn">Register</a>
-
-            {% endif %}
-        </div>
-
-        {# Posts List #}
-        {% for post in posts %}
-            <div class="card" style="margin-bottom: 15px; text-align: left;">
-                <h2 style="margin-top: 0;">
-                    <a href="{{ path('app_post_show', {'id': post.id}) }}" style="color: #333; text-decoration: none;">
-                        {{ post.title }}
-                    </a>
-                </h2>
-                <p style="font-size: 0.9em; color: #777;">
-                    Written by <strong>{{ post.author.username }} ({{ post.author.reputation }} points)</strong> on {{ post.createdDate|date('d/m/Y') }}
-                </p>
-                <p>{{ post.content|slice(0, 100) }}...</p>
-                
-                <p style="font-size: 0.8em; color: #555; font-weight: bold;">
-                    Likes: {{ post.likesCount }} | Dislikes: {{ post.dislikesCount }}
-                </p>
-
-                <a href="{{ path('app_post_show', {'id': post.id}) }}" style="color: #007bff; text-decoration: none;">Read more →</a>
+        {% if app.user %}
+            <p style="text-align: center;">Hello <strong style="color: yellow;">{{ app.user.username }}</strong> !</p>
+            <div style="text-align: center;">
+                <a href="{{ path('app_post_new') }}" class="btn" style="background-color: #ff00aa;">+ New Post</a>
+                <a href="{{ path('app_logout') }}" class="btn" style="background-color: #6c757d;">Logout</a>
             </div>
         {% else %}
-            <div class="card" style="text-align: center;">
-                <p>No posts found yet.</p>
-            </div>
-        {% endfor %}
+            {# ANONYMOUS USER #}
+            {% if anonymous_info is defined and anonymous_info %}
+                <div style="border: 2px dashed #fff; padding: 10px; margin: 10px;">
+                    <h3 style="color: #0ff; margin:0;">{{ anonymous_info.name }}</h3>
+                    <small>Last action: {{ anonymous_info.seconds_since }} seconds ago.</small>
+                </div>
+            {% endif %}
 
+            <p style="text-align: center;">Please log in to publish articles.</p>
+            <div style="text-align: center;">
+                <a href="{{ path('app_login') }}" class="btn">Log in</a>
+                <a href="{{ path('app_register') }}" class="btn">Register</a>
+            </div>
+        {% endif %}
     </div>
+
+    {# Posts List #}
+    {% for post in posts %}
+        <div class="post">
+            <div class="post-title">{{ post.title }}</div>
+            
+            <p>{{ post.content|slice(0, 100) }}...</p>
+            
+            <div class="tags" style="margin-top: 10px; border-top: 1px dashed #ff00aa; padding-top: 5px;">
+                <p>
+                    Written by <strong style="color: yellow;">{{ post.author.username }}</strong> 
+                    ({{ post.author.reputation }} points)
+                    on {{ post.createdDate|date('d/m/Y') }}
+                </p>
+                <p style="font-weight: bold;">
+                    <span style="color: #0f0;">Likes: {{ post.likesCount }}</span> | 
+                    <span style="color: #f00;">Dislikes: {{ post.dislikesCount }}</span>
+                </p>
+                <a href="{{ path('app_post_show', {'id': post.id}) }}">Read more →</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="post">
+            <p style="text-align: center;">No posts found yet.</p>
+        </div>
+    {% endfor %}
+
 {% endblock %}

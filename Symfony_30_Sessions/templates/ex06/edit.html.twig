@@ -3,15 +3,17 @@
 {% block title %}Edit Post{% endblock %}
 
 {% block body %}
-    <div class="card">
-        <h1>Edit Post</h1>
+    <div class="post">
+        <div class="post-title">Edit Post</div>
         
         {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button type="submit" class="btn">Save changes</button>
+            <div style="text-align: center;">
+                 <button type="submit" class="btn">Save changes</button>
+            </div>
         {{ form_end(form) }}
 
-        <div class="links">
+        <div style="text-align: center; margin-top: 15px;">
             <a href="{{ path('app_post_show', {'id': post.id}) }}">Cancel</a>
         </div>
     </div>
